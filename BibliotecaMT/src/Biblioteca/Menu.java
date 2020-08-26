@@ -9,8 +9,8 @@ public class Menu {
 		System.out.println("Como desea iniciar");
 		System.out.println("1-Usuario");
 		System.out.println("2-Administrador");
-		Scanner sc = new Scanner;
-		int us = sc.nextLine();
+		Scanner sc = new Scanner(System.in);
+		int us = sc.nextInt();
 		if(us == 2)
 		{
 			int log = logearse();
@@ -25,7 +25,7 @@ public class Menu {
 				System.out.println("5-Eliminar libro");
 			}
 			System.out.println("6-salir");
-			Scanner sc = new Scanner;
+			sc = new Scanner(System.in);
 			int opc = sc.nextLine();
 			
 			switch(opc){
@@ -57,15 +57,15 @@ public class Menu {
 
 	public int logearse() {
 		
-		int log;
+		int log = 0;
 		
 		System.out.println("Ingrese usuario");
-		Scanner sc = new Scanner;
+		Scanner sc = new Scanner(System.in);
 		String usuario = sc.nextLine();
 		System.out.println("Ingrese contraseña");
-		Scanner sc = new Scanner;
+		 sc = new Scanner(System.in);
 		String contra =sc.nextLine();
 		
-		retun log;
+		return log;
 	}
 }
