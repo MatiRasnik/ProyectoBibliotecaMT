@@ -8,16 +8,10 @@ public class Menu {
 	{
 		Menu m = new Menu();
 		ConeccionMySQL sql = new ConeccionMySQL();
+
+		int log = logearse();
 		
-		System.out.println("Como desea iniciar");
-		System.out.println("1-Usuario");
-		System.out.println("2-Administrador");
-		Scanner sc = new Scanner(System.in);
-		int us = sc.nextInt();
-		if(us == 2)
-		{
-			int log = logearse();
-		}
+		
 		do{
 			System.out.println("Que desea hacer?");
 			System.out.println("1-Buscar libro");
@@ -30,9 +24,9 @@ public class Menu {
 			System.out.println("6-salir");
 			sc = new Scanner(System.in);
 			int opc = sc.nextLine();
-			
+
 			switch(opc){
-			
+
 				case 1
 					
 					break;
@@ -59,7 +53,7 @@ public class Menu {
 	}
 
 	public int logearse() {
-		
+
 		int log;
 
 		System.out.println("Ingrese usuario");
@@ -70,7 +64,7 @@ public class Menu {
 		String contra =sc.nextLine();
 
 		sql.conectarConBase();
-		
+
 		String SQL = "SELECT COUNT(id) AS i FROM usuarios WHERE usuario='"+usuario+"'"+"AND contra = '"+contra+"' ";
 		sql.resultado = sql.sentencia.executeQuery(SQL);
 		while (con.resultado.next()) {
@@ -82,7 +76,7 @@ public class Menu {
 			}
 		}
 		sql.desconectar();
-		
+
 		return log;
 	}
 }
