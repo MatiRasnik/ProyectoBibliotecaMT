@@ -6,6 +6,9 @@ public class Menu {
 
 	public static void main(String[] args) 
 	{
+		Menu m = new Menu();
+		ConeccionMySQL sql = new ConeccionMySQL();
+		
 		System.out.println("Como desea iniciar");
 		System.out.println("1-Usuario");
 		System.out.println("2-Administrador");
@@ -57,14 +60,28 @@ public class Menu {
 
 	public int logearse() {
 		
-		int log = 0;
-		
+		int log;
+
 		System.out.println("Ingrese usuario");
-		Scanner sc = new Scanner(System.in);
+		Scanner sc = new Scanner;
 		String usuario = sc.nextLine();
 		System.out.println("Ingrese contraseña");
-		 sc = new Scanner(System.in);
+		Scanner sc = new Scanner;
 		String contra =sc.nextLine();
+
+		sql.conectarConBase();
+		
+		String SQL = "SELECT COUNT(id) AS i FROM usuarios WHERE usuario='"+usuario+"'"+"AND contra = '"+contra+"' ";
+		sql.resultado = sql.sentencia.executeQuery(SQL);
+		while (con.resultado.next()) {
+			if(sql.resultado.getString("i").equals("1"))	{
+				log = 1;
+				System.out.println("se a logiado correctamente");
+			}else {
+				System.out.println("La contraseña o usuario son invalidas");
+			}
+		}
+		sql.desconectar();
 		
 		return log;
 	}
