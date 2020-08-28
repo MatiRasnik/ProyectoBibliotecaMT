@@ -1,15 +1,17 @@
 package Biblioteca;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Menu {
 
-	public static void main(String[] args) 
+	public static void main(String[] args) throws SQLException 
 	{
-		Menu m = new Menu();
-
-		int log = logearse();
+		int log;
+		Libros l = new Libros();
+		log = l.logearse();
 		
+		int opc;
 		do{
 			System.out.println("Que desea hacer?");
 			System.out.println("1-Buscar libro");
@@ -21,61 +23,96 @@ public class Menu {
 			}
 			System.out.println("6-salir");
 			Scanner sc = new Scanner(System.in);
-			int opc;
 			opc = sc.nextInt();
+			sc.close();
 
 			switch(opc){
 
 				case 1:
+					/*
+					System.out.println("Como quiere buscar");
 					
+					System.out.println("busqueda avanzada");
+					{
+						BuscarLibrosA(Libro);
+					}
+					System.out.println("busqueda normal");
+					{
+						public void BuscarLibros(Libros);
+					}
+					*/
 					break;
 				case 2:
-				
+					/*
+					 System.out.println("que quiere consultar");
+					 
+					 System.out.println("1-nose");
+					 {
+					 	Nose1();
+					 }
+					 System.out.println("2-nose");
+					 {
+					 	Nose1();
+					 }
+					 System.out.println("3-nose");
+					 {
+					 	Nose1();
+					 }
+					 System.out.println("4-nose");
+					 {
+					 	Nose1();
+					 }
+					*/
 					break;
 				case 3:
 					if(log == 1) {
-						
+						/*
+						System.out.println("Como quiere buscar");
+					
+					System.out.println("busqueda avanzada");
+					{
+						BuscarLibrosA(Libro);
+					}
+					System.out.println("busqueda normal");
+					{
+						public void BuscarLibros(Libros);
+					}
+						 */
 					}
 					break;
 				case 4:
 					if(log == 1) {
-						
+						/*
+						 System.out.println("inserte datos del libro");
+						 
+						 System.out.println("Titulo");
+						 System.out.println("autor");
+						 System.out.println("fecha");
+						 System.out.println("esditorial");
+						 System.out.println("tipo");
+						 
+						 Agregarlibro(libro);
+						*/
 					}
 					break;
 				case 5:
 					if(log == 1) {
-						
+						/*
+						System.out.println("Como quiere buscar");
+					
+					System.out.println("busqueda avanzada");
+					{
+						BuscarLibrosA(Libro);
+					}
+					System.out.println("busqueda normal");
+					{
+						public void BuscarLibros(Libros);
+					}
+						*/
 					}
 					break;
 			}
 		}while(opc == 6);
 	}
-
-	public static int logearse() {
-
-		int log;
-
-		System.out.println("Ingrese usuario");
-		Scanner sc = new Scanner(System.in);
-		String usuario = sc.nextLine();
-		System.out.println("Ingrese contraseña");
-		String contra =sc.nextLine();
-
-		ConeccionMySQL sql = new ConeccionMySQL();
-		sql.conectarConBase();
-
-		String SQL = "SELECT COUNT(id) AS i FROM usuarios WHERE usuario='"+usuario+"'"+"AND contra = '"+contra+"' ";
-		sql.resultado = sql.sentencia.executeQuery(SQL);
-		while (con.resultado.next()) {
-			if(sql.resultado.getString("i").equals("1"))	{
-				log = 1;
-				System.out.println("se a logiado correctamente");
-			}else {
-				System.out.println("La contraseña o usuario son invalidas");
-			}
-		}
-		sql.desconectar();
-
-		return log;
-	}
+	
 }

@@ -10,7 +10,7 @@ public class ConeccionMySQL {
 	 
 	public Connection conectarConBase() {
 		
-		java.sql.Connection conexion;
+		java.sql.Connection conexion = null;
 		
 		try {
 
@@ -30,7 +30,7 @@ public class ConeccionMySQL {
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
-			System.out.println("Error en la conexion con el Base");"
+			System.out.println("Error en la conexion con el Base");
 		}
 		return conexion;
 	}
@@ -55,5 +55,6 @@ public class ConeccionMySQL {
 	public Connection getConnection(){
 		 return conexion;
 	}
+	
 	
 }
