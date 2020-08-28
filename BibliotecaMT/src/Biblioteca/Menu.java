@@ -7,10 +7,8 @@ public class Menu {
 	public static void main(String[] args) 
 	{
 		Menu m = new Menu();
-		ConeccionMySQL sql = new ConeccionMySQL();
 
 		int log = logearse();
-		
 		
 		do{
 			System.out.println("Que desea hacer?");
@@ -22,47 +20,48 @@ public class Menu {
 				System.out.println("5-Eliminar libro");
 			}
 			System.out.println("6-salir");
-			sc = new Scanner(System.in);
-			int opc = sc.nextLine();
+			Scanner sc = new Scanner(System.in);
+			int opc;
+			opc = sc.nextInt();
 
 			switch(opc){
 
-				case 1
+				case 1:
 					
 					break;
-				case 2
+				case 2:
 				
 					break;
-				case 3
+				case 3:
 					if(log == 1) {
 						
 					}
 					break;
-				case 4
+				case 4:
 					if(log == 1) {
 						
 					}
 					break;
-				case 5
+				case 5:
 					if(log == 1) {
 						
 					}
 					break;
 			}
-		}while(opc == 6)
+		}while(opc == 6);
 	}
 
-	public int logearse() {
+	public static int logearse() {
 
 		int log;
 
 		System.out.println("Ingrese usuario");
-		Scanner sc = new Scanner;
+		Scanner sc = new Scanner(System.in);
 		String usuario = sc.nextLine();
 		System.out.println("Ingrese contraseña");
-		Scanner sc = new Scanner;
 		String contra =sc.nextLine();
 
+		ConeccionMySQL sql = new ConeccionMySQL();
 		sql.conectarConBase();
 
 		String SQL = "SELECT COUNT(id) AS i FROM usuarios WHERE usuario='"+usuario+"'"+"AND contra = '"+contra+"' ";

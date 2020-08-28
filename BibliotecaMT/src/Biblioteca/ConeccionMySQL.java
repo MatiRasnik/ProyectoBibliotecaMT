@@ -10,15 +10,14 @@ public class ConeccionMySQL {
 	 
 	public Connection conectarConBase() {
 		
-		java.sql.Connection conector;
+		java.sql.Connection conexion;
 		
 		try {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			nombreBaseString = "jdbc:mysql://localhost:3306/"+"BibMT";
-			conector = DriverManager.getConnection("BibMT","root","root");
+			conexion = DriverManager.getConnection("BibMT","root","root");
 			sentencia = conexion.createStatement();
-			if (conector != null) {
+			if (conexion != null) {
 				
 				System.out.println("Conexión Exitosa");
 			}
@@ -31,24 +30,24 @@ public class ConeccionMySQL {
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
-			System.out.println("Error en la conexion con el Base”);"
+			System.out.println("Error en la conexion con el Base");"
 		}
-		
+		return conexion;
 	}
 	
 	public void desconectar() throws SQLException {
 			
 		try {
 			
-			if (conector != null) {
+			if (conexion != null) {
 			if(sentencia != null) {
 			sentencia.close();
 			}
-				conector.close();
+				conexion.close();
 			}
 			
 		}catch (SQLException ex) {
-			 JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			 System.out.println("Error");
 			 System.exit(1);
 		}	
 	}
