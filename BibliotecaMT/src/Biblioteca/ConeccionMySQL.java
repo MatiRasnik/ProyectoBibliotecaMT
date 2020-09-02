@@ -15,7 +15,7 @@ public class ConeccionMySQL {
 		try {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conexion = DriverManager.getConnection("BibMT","root","root");
+			conexion = DriverManager.getConnection("bibmt","root","root");
 			sentencia = conexion.createStatement();
 			if (conexion != null) {
 				

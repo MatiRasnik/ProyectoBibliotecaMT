@@ -1,12 +1,12 @@
 package Biblioteca;
-
+	
+import java.sql.*;
 
 import java.sql.*;
 import java.util.Scanner;
-
+	
 public class Libros {
-
-	public int log;
+	
 	
 	public void ModificarLibros() {
 		
@@ -19,24 +19,27 @@ public class Libros {
 		
 	}
 	public void EliminarLibros() {
-	 
+		
 	}
 	public void AgregarLibros(Libros Libro) {
-	
+		
 	}
 	public int logearse() throws SQLException {
-
+		
+		int log = 0;
 		System.out.println("Ingrese usuario");
 		Scanner sc = new Scanner(System.in);
 		String usuario = sc.nextLine();
 		System.out.println("Ingrese contraseña");
 		String contra =sc.nextLine();
 		sc.close();
-
+		
+		Connection conexion = null;
+		
 		ConeccionMySQL sql = new ConeccionMySQL();
-
-
-		String SQL = "SELECT COUNT(id) AS i FROM usuarios WHERE usuario='"+usuario+"'"+"AND contra = '"+contra+"' ";
+		conexion = sql.conectarConBase();
+		
+		String SQL = "SELECT * FROM usuarios WHERE usuario='"+usuario+"'"+"AND contra = '"+contra+"' ";
 		sql.resultado = sql.sentencia.executeQuery(SQL);
 		while (sql.resultado.next()) {
 			if(sql.resultado.getString("i").equals("1"))	{
@@ -47,7 +50,7 @@ public class Libros {
 			}
 		}
 		sql.desconectar();
-
+		
 		return log;
 	}
 	
