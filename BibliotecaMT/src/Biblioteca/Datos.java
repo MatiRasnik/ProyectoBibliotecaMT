@@ -1,4 +1,4 @@
-spackage Biblioteca;
+package Biblioteca;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

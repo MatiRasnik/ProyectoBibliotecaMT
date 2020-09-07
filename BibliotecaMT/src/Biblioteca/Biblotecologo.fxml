@@ -16,7 +16,7 @@
          </font>
       </Label>
       <Line endX="322.0" layoutX="496.0" layoutY="118.0" startX="-241.0" stroke="#ececec" strokeLineCap="BUTT" strokeType="OUTSIDE" />
-      <JFXButton layoutX="327.0" layoutY="294.0" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="🔎 BUSQUEDA" textFill="#ececec">
+      <JFXButton layoutX="328.0" layoutY="213.0" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="🔎 BUSQUEDA" textFill="#ececec">
          <font>
             <Font size="24.0" />
          </font>
@@ -33,20 +33,15 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="button_ingresar" layoutX="328.0" layoutY="418.0" onAction="#Ingresar" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="INGRESAR LIBRO" textFill="#ececec">
+      <JFXButton fx:id="button_ingresar" layoutX="328.0" layoutY="428.0" onAction="#Ingresar" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="INGRESAR LIBRO" textFill="#ececec">
          <font>
             <Font size="24.0" />
          </font>
       </JFXButton>
-      <Label fx:id="lbl_usuario" layoutX="521.0" layoutY="143.0" text="usuario" textFill="#ececec" visible="false">
+      <JFXButton fx:id="button_busqueda_avanzada" layoutX="327.0" layoutY="320.0" onAction="#Busqueda_Avanzada" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="🔎 BUSQUEDA AVANZADA" textFill="#ececec">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
-      </Label>
-      <Label layoutX="409.0" layoutY="143.0" text="Bienvenido: " textFill="#ececec">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
+      </JFXButton>
    </children>
 </AnchorPane>

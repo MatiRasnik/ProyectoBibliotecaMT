@@ -44,14 +44,8 @@ public class LoginController {
 	    private ImageView button_atras;
 
 	    @FXML
-	    void Atras(MouseEvent event) throws IOException {
-	    	Parent main = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-
-	        Scene scene = new Scene(main);
-	        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-	        window.setScene(scene);
-	        window.show();
-
+	    void Atras(MouseEvent event) {
+	    
 	    }
 	    boolean sesionIniciada = false;
 
@@ -77,7 +71,7 @@ public class LoginController {
 					
 							if(usuario.equalsIgnoreCase(resultado.getString("usuario"))){
 								 u_correcto = true;
-								 if(contraseña.contentEquals(resultado.getString("contra"))) {
+								 if(contraseña.equals(resultado.getString("contra"))) {
 									c_correcto = true; 
 									}else{
 										 lbl_error.setVisible(true);
@@ -88,6 +82,16 @@ public class LoginController {
 								 		}
 								}
 				if(u_correcto == true && c_correcto == true) {
+					
+					if(resultado.getString("usuario").equalsIgnoreCase("admin") && resultado.getString("contra").equals("admin")) {
+						Parent main = FXMLLoader.load(getClass().getResource("NuevoAdmin.fxml"));
+
+				        Scene scene = new Scene(main);
+				        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+				        window.setScene(scene);
+				        window.show();
+						
+					}else {
 									
 						//0-->ADMIN
 						//1-->Bibliotecologo
@@ -117,6 +121,7 @@ public class LoginController {
 
 							}
 										}
+					}
 				
 			 	} catch (SQLException e) {
 					System.out.println( "No se pudo conectar con la Base de Datos");
@@ -124,7 +129,14 @@ public class LoginController {
 			 }
 	
 	    @FXML
-	    void atras(ActionEvent event) {
+	    void atras(ActionEvent event) throws IOException {
+	    	Parent main = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+
+	        Scene scene = new Scene(main);
+	        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+	        window.setScene(scene);
+	        window.show();
+
 
 	    }
 
