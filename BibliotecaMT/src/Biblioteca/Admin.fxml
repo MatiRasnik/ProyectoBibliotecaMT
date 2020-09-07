@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1047.0" style="-fx-background-color: #383e56;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Biblioteca.MenuController">
+   <children>
+      <Label layoutX="447.0" layoutY="36.0" text="BIBMT" textFill="#ececec">
+         <font>
+            <Font name="Yu Gothic Medium" size="48.0" />
+         </font>
+      </Label>
+      <Line endX="322.0" layoutX="484.0" layoutY="123.0" startX="-241.0" stroke="#ececec" strokeLineCap="BUTT" strokeType="OUTSIDE" />
+      <JFXButton fx:id="button_busqueda" layoutX="327.0" layoutY="219.0" onAction="#Busqueda" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="🔎 BUSQUEDA" textFill="#ececec">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="button_modificar" layoutX="327.0" layoutY="425.0" onAction="#modificar" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="MODIFICAR LIBRO" textFill="#ececec">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="button_ingresar" layoutX="328.0" layoutY="329.0" onAction="#Ingresar" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="INGRESAR LIBRO" textFill="#ececec">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="399.0" layoutY="133.0" text="Bienvenido: " textFill="#ececec">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_usuario" layoutX="511.0" layoutY="133.0" text="usuario" textFill="#ececec" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="button_ingresarus" layoutX="327.0" layoutY="516.0" onAction="#IngresarUsuario" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="INGRESAR USUARIO" textFill="#ececec">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="buttont_atras" layoutX="97.0" layoutY="653.0" onAction="#atras" ripplerFill="#f8b595" text="Atras" textFill="#ececec">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="button_atras" fitHeight="37.0" fitWidth="59.0" onDragDetected="#Atras" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+               <image>
+                  <Image url="@../css/32195%20(1).png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1047.0" style="-fx-background-color: #383e56;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Biblioteca.MenuController">
+   <children>
+      <Label layoutX="447.0" layoutY="48.0" text="BIBMT" textFill="#ececec">
+         <font>
+            <Font name="Yu Gothic Medium" size="48.0" />
+         </font>
+      </Label>
+      <Line endX="195.0" layoutX="547.0" layoutY="116.0" startX="-241.0" stroke="#ececec" strokeLineCap="BUTT" strokeType="OUTSIDE" />
+      <JFXButton fx:id="button_logn" layoutX="933.0" layoutY="641.0" onAction="#ButtonLogIn" ripplerFill="#f8b595" style="-fx-background-color: #282d3e;" text="Log In" textFill="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="button_busqueda" layoutX="327.0" layoutY="345.0" onAction="#ButtonBusqueda" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="🔎 BUSQUEDA" textFill="#ececec">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

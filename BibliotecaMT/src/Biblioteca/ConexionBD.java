@@ -15,13 +15,12 @@ public class ConexionBD {
 	try {
 		
 		Class.forName("com.mysql.cj.jdbc.Driver"); 
-		nombreBase = "jdbc:mysql://localhost:3306/"+ nombreBase;
+		nombreBase = "jdbc:mysql://localhost:3306/"+ nombreBase +"?useTimezone=true&serverTimezone=UTC";
 		conector = DriverManager.getConnection(nombreBase, usuarioBase, passwordBase);
-		if (conector != null)
-		JOptionPane.showMessageDialog(null, "Se a conectado a la Base de Datos");
-		
+		if (conector != null) {
+		System.out.println("Se a conectado a la Base de Datos");
+		}
 	} catch (ClassNotFoundException e) {
-		
 		e.printStackTrace();
 		JOptionPane.showMessageDialog(null, "Error en la conexion con el Driver");
 		
