@@ -43,5 +43,10 @@
             <Font size="24.0" />
          </font>
       </JFXButton>
+      <JFXButton fx:id="button_ingresartipo" layoutX="327.0" layoutY="517.0" onAction="#Ingresar_tipo" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="INGRESAR NUEVO TIPO" textFill="#ececec">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

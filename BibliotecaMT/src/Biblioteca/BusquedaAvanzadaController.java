@@ -1,4 +1,5 @@
 package Biblioteca;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
@@ -8,7 +9,13 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class IngresarLibroController {
+public class BusquedaAvanzadaController {
+
+    @FXML
+    private JFXButton buttont_atras;
+
+    @FXML
+    private ImageView button_atras;
 
     @FXML
     private JFXTextField textfield_tipo;
@@ -44,13 +51,7 @@ public class IngresarLibroController {
     private JFXDatePicker fechacad;
 
     @FXML
-    private JFXButton button_ingresar;
-
-    @FXML
-    private JFXButton buttont_atras;
-
-    @FXML
-    private ImageView button_atras;
+    private JFXButton button_buscar;
 
     @FXML
     void Atras(MouseEvent event) {
@@ -58,12 +59,12 @@ public class IngresarLibroController {
     }
 
     @FXML
-    void ButtonIngresar(ActionEvent event) {
+    void atras(ActionEvent event) {
 
     }
 
     @FXML
-    void atras(ActionEvent event) {
+    void buscar(ActionEvent event) {
 
     }
 

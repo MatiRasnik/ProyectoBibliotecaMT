@@ -51,8 +51,8 @@ public class NuevoAdminController {
     @FXML
     void Nuevo_Admin(ActionEvent event) throws IOException {
     	NuevoAdmin();
+    	
     	Parent main = FXMLLoader.load(getClass().getResource("NuevoAdmin.fxml"));
-
         Scene scene = new Scene(main);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene);
@@ -94,6 +94,8 @@ public class NuevoAdminController {
 						lbl_uscorrecto.setVisible(true);
 						 		}
 						}
+				con.close();
+				bu.close();
 		
     		} catch (SQLException e) {
 				System.out.println( "No se pudo conectar con la Base de Datos");

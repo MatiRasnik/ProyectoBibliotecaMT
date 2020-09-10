@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 
 public class AdminController {
 
-    @FXML
+	@FXML
     private JFXButton button_busqueda;
 
     @FXML
@@ -37,6 +37,15 @@ public class AdminController {
 
     @FXML
     private JFXButton button_busqueda_avanzada;
+
+    @FXML
+    private JFXButton button_ingresarstipo;
+
+    @FXML
+    private JFXButton button_eliminarusuario;
+
+    @FXML
+    private JFXButton button_eliminartipo;
 
     @FXML
     void Atras(MouseEvent event) {
@@ -64,6 +73,16 @@ public class AdminController {
         window.setScene(scene);
         window.show();
     }
+    
+    @FXML
+    void EliminarTipo(ActionEvent event) throws IOException {
+    	Parent main = FXMLLoader.load(getClass().getResource("EliminarTipo.fxml"));
+
+        Scene scene = new Scene(main);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
 
     @FXML
     void Ingresar(ActionEvent event) throws IOException {
@@ -74,6 +93,16 @@ public class AdminController {
         window.setScene(scene);
         window.show();
 
+    }
+    
+    @FXML
+    void IngresarTipo(ActionEvent event) throws IOException {
+    	Parent main = FXMLLoader.load(getClass().getResource("IngresarTipo.fxml"));
+
+        Scene scene = new Scene(main);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
     }
 
     @FXML
@@ -86,6 +115,16 @@ public class AdminController {
         window.show();
 
     }
+    
+    @FXML
+    void EliminarUsuario(ActionEvent event) throws IOException {
+    	Parent main = FXMLLoader.load(getClass().getResource("EliminarUsuario.fxml"));
+
+        Scene scene = new Scene(main);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
 
     @FXML
     void atras(ActionEvent event) throws IOException {
@@ -95,7 +134,6 @@ public class AdminController {
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
-
     }
 
     @FXML

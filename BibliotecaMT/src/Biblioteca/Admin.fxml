@@ -16,22 +16,22 @@
          </font>
       </Label>
       <Line endX="322.0" layoutX="484.0" layoutY="123.0" startX="-241.0" stroke="#ececec" strokeLineCap="BUTT" strokeType="OUTSIDE" />
-      <JFXButton fx:id="button_busqueda" layoutX="327.0" layoutY="154.0" onAction="#Busqueda" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="🔎 BUSQUEDA" textFill="#ececec">
+      <JFXButton fx:id="button_busqueda" layoutX="47.0" layoutY="156.0" onAction="#Busqueda" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="🔎 BUSQUEDA" textFill="#ececec">
          <font>
             <Font size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="button_modificar" layoutX="327.0" layoutY="425.0" onAction="#modificar" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="MODIFICAR LIBRO" textFill="#ececec">
+      <JFXButton fx:id="button_modificar" layoutX="610.0" layoutY="256.0" onAction="#modificar" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="MODIFICAR LIBRO" textFill="#ececec">
          <font>
             <Font size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="button_ingresar" layoutX="328.0" layoutY="329.0" onAction="#Ingresar" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="INGRESAR LIBRO" textFill="#ececec">
+      <JFXButton fx:id="button_ingresar" layoutX="47.0" layoutY="256.0" onAction="#Ingresar" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="INGRESAR LIBRO" textFill="#ececec">
          <font>
             <Font size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="button_ingresarus" layoutX="327.0" layoutY="516.0" onAction="#IngresarUsuario" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="INGRESAR USUARIO" textFill="#ececec">
+      <JFXButton fx:id="button_ingresarus" layoutX="54.0" layoutY="358.0" onAction="#IngresarUsuario" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="INGRESAR USUARIO" textFill="#ececec">
          <font>
             <Font size="24.0" />
          </font>
@@ -48,7 +48,22 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="button_busqueda_avanzada" layoutX="328.0" layoutY="245.0" onAction="#Busqueda_Avanzada" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="🔎 BUSQUEDA AVANZADA" textFill="#ececec">
+      <JFXButton fx:id="button_busqueda_avanzada" layoutX="610.0" layoutY="156.0" onAction="#Busqueda_Avanzada" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="🔎 BUSQUEDA AVANZADA" textFill="#ececec">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="button_ingresarstipo" layoutX="54.0" layoutY="451.0" onAction="#IngresarTipo" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="INGRESAR NUEVO TIPO" textFill="#ececec">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="button_eliminarusuario" layoutX="610.0" layoutY="358.0" onAction="#EliminarUsuario" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="ELIMINAR USUARIO" textFill="#ececec">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="button_eliminartipo" layoutX="610.0" layoutY="451.0" onAction="#EliminarTipo" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="ELIMINAR TIPO" textFill="#ececec">
          <font>
             <Font size="24.0" />
          </font>

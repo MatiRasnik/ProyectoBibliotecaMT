@@ -29,6 +29,9 @@ public class BiblotecologoController {
     private JFXButton button_busqueda_avanzada;
 
     @FXML
+    private JFXButton button_ingresartipo;
+
+    @FXML
     void Atras(MouseEvent event) {
 
     }
@@ -53,6 +56,16 @@ public class BiblotecologoController {
         window.setScene(scene);
         window.show();
 
+    }
+    
+    @FXML
+    void Ingresar_tipo(ActionEvent event) throws IOException {
+    	Parent main = FXMLLoader.load(getClass().getResource("IngresarTipo.fxml"));
+
+        Scene scene = new Scene(main);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
     }
 
     @FXML

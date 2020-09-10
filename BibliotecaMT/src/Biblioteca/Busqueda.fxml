@@ -90,47 +90,47 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXTextField fx:id="textfield_tipo" focusColor="#f8b595" layoutX="223.0" layoutY="184.0" prefHeight="31.0" prefWidth="218.0" promptText="xxxxxxxxxxxxxxxxxxxxxxxxxxxxx" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
+      <JFXTextField fx:id="textfield_tipo" focusColor="#f8b595" layoutX="223.0" layoutY="184.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="textfield_titulo" focusColor="#f8b595" layoutX="223.0" layoutY="247.0" prefHeight="31.0" prefWidth="218.0" promptText="xxxxxxxxxxxxxxxxxxxxxxxxxxxxx" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
+      <JFXTextField fx:id="textfield_titulo" focusColor="#f8b595" layoutX="223.0" layoutY="247.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="textfield_autor" focusColor="#f8b595" layoutX="223.0" layoutY="330.0" prefHeight="31.0" prefWidth="218.0" promptText="xxxxxxxxxxxxxxxxxxxxxxxxxxxxx" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
+      <JFXTextField fx:id="textfield_autor" focusColor="#f8b595" layoutX="223.0" layoutY="330.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="textfield_editorial" focusColor="#f8b595" layoutX="223.0" layoutY="463.0" prefHeight="31.0" prefWidth="218.0" promptText="xxxxxxxxxxxxxxxxxxxxxxxxxxxxx" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
+      <JFXTextField fx:id="textfield_editorial" focusColor="#f8b595" layoutX="223.0" layoutY="463.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="textfield_genero" focusColor="#f8b595" layoutX="223.0" layoutY="535.0" prefHeight="31.0" prefWidth="218.0" promptText="xxxxxxxxxxxxxxxxxxxxxxxxxxxxx" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
+      <JFXTextField fx:id="textfield_genero" focusColor="#f8b595" layoutX="223.0" layoutY="535.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="textfield_paginas" focusColor="#f8b595" layoutX="816.0" layoutY="259.0" prefHeight="31.0" prefWidth="218.0" promptText="xxxxxxxxxxxxxxxxxxxxxxxxxxxxx" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
+      <JFXTextField fx:id="textfield_paginas" focusColor="#f8b595" layoutX="816.0" layoutY="259.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="textfield_tomos" focusColor="#f8b595" layoutX="816.0" layoutY="330.0" prefHeight="31.0" prefWidth="218.0" promptText="xxxxxxxxxxxxxxxxxxxxxxxxxxxxx" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
+      <JFXTextField fx:id="textfield_tomos" focusColor="#f8b595" layoutX="816.0" layoutY="330.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="textfield_unidades" focusColor="#f8b595" layoutX="816.0" layoutY="406.0" prefHeight="31.0" prefWidth="218.0" promptText="xxxxxxxxxxxxxxxxxxxxxxxxxxxxx" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
+      <JFXTextField fx:id="textfield_unidades" focusColor="#f8b595" layoutX="816.0" layoutY="406.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="textfield_precio" focusColor="#f8b595" layoutX="816.0" layoutY="475.0" prefHeight="31.0" prefWidth="218.0" promptText="xxxxxxxxxxxxxxxxxxxxxxxxxxxxx" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
+      <JFXTextField fx:id="textfield_precio" focusColor="#f8b595" layoutX="816.0" layoutY="475.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
          <font>
             <Font size="16.0" />
          </font>

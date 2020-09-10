@@ -84,8 +84,8 @@ public class LoginController {
 				if(u_correcto == true && c_correcto == true) {
 					
 					if(resultado.getString("usuario").equalsIgnoreCase("admin") && resultado.getString("contra").equals("admin")) {
+						
 						Parent main = FXMLLoader.load(getClass().getResource("NuevoAdmin.fxml"));
-
 				        Scene scene = new Scene(main);
 				        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 				        window.setScene(scene);
@@ -99,13 +99,10 @@ public class LoginController {
 						String verificartipo = "select * from usuarios where usuario ='"+usuario+"'" ;
 						Statement vt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 						ResultSet resultadoVT = vt.executeQuery(verificartipo);
-						
-
-						//boolean b = resultadoVT.getBoolean("tipo_usuario");
-
-						if(resultadoVT.getBoolean("tipo_usuario")) {
+							
+						if(resultadoVT.getString("tipo_usuario").equals("0")) {
+							
 							Parent main = FXMLLoader.load(getClass().getResource("Admin.fxml"));
-
 					        Scene scene = new Scene(main);
 					        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 					        window.setScene(scene);

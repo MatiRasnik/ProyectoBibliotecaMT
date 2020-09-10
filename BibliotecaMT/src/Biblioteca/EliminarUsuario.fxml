@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1047.0" style="-fx-background-color: #383e56;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Biblioteca.EliminarUsuarioController">
+   <children>
+      <JFXTextField fx:id="textfield_usuario" focusColor="#f8b595" labelFloat="true" layoutX="415.0" layoutY="307.0" prefHeight="31.0" prefWidth="218.0" promptText="Usuario" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <Label layoutX="447.0" layoutY="48.0" text="BIBMT" textFill="#ececec">
+         <font>
+            <Font name="Yu Gothic Medium" size="48.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="button_eliminar" layoutX="484.0" layoutY="550.0" onAction="#Eliminar_usuario" ripplerFill="#f8b595" style="-fx-background-color: #282d3e;" text="Eliminar" textFill="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="buttont_atras" layoutX="86.0" layoutY="653.0" onAction="#atras" ripplerFill="#f8b595" text="Atras" textFill="#ececec">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="button_atras" fitHeight="37.0" fitWidth="59.0" onDragDetected="#Atras" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+               <image>
+                  <Image url="@../css/32195%20(1).png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Line endX="322.0" layoutX="484.0" layoutY="124.0" startX="-241.0" stroke="#ececec" strokeLineCap="BUTT" strokeType="OUTSIDE" />
+      <Label fx:id="lbl_error" layoutX="432.0" layoutY="504.0" text="Usuario no encontrado" textFill="#f8b595" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_eliminado" layoutX="392.0" layoutY="504.0" text="Usuario eliminado correctamente" textFill="#f8b595" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_eliminado1" layoutX="266.0" layoutY="358.0" text="Una vez eliminado el usuario su informacion sera borrada de permanente" textFill="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
