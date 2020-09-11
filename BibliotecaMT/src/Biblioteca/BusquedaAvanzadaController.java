@@ -140,27 +140,28 @@ public class BusquedaAvanzadaController {
 	    				if(palabra == Fechacad) {
 	    					coincidencias.add(ID);
 	    				}else {
-	    					
-	    				if(palabra == Tipo) {
+	    					String TipoCadena= Integer.toString(Tipo);
+	    				if(palabra == TipoCadena) {
 	    					coincidencias.add(ID);
 	    				}else {
-	    					
-	    				if(palabra == Paginas) {
+	    					String PaginasCadena= Integer.toString(Paginas);
+	    				if(palabra == PaginasCadena) {
 	    					coincidencias.add(ID);
 	    				}else {
-	    					
-	    				if(palabra == Tomos) {
+	    					String TomosCadena= Integer.toString(Tomos);
+	    				if(palabra == TomosCadena) {
 	    					coincidencias.add(ID);
 	    				}else {
-	    	
-	    				if(palabra == Unidades) {
+	    					String UnidadesCadena= Integer.toString(Unidades);
+	    				if(palabra == UnidadesCadena) {
 	    					coincidencias.add(ID);
 	    				}else {
-	    					
-	    				if(palabra == Precio) {
+	    					String PrecioCadena= Integer.toString(Precio);
+	    				if(palabra == PrecioCadena) {
 	    					coincidencias.add(ID);
 	    				}}}}}}}}}}}
-	    				BusquedaRecursiva(palabras,indice,coincidencias);	
+	    				indice++;
+	    				coincidencias = BusquedaRecursiva(palabras,indice,coincidencias);	
 	    			}	
 	    		} catch (SQLException e) {
 	    			e.printStackTrace();
