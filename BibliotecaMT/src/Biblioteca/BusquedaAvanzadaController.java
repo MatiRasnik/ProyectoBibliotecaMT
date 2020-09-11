@@ -82,6 +82,7 @@ public class BusquedaAvanzadaController {
     		if(indice > palabras.size())
     		{
 	    		String palabra = palabras.get(indice);
+	    		palabra = palabra.trim();
 	    		
 	    		int id = Integer.parseInt(textfield_tipo.getText());
 	    		int tipo = Integer.parseInt(textfield_tipo.getText());
@@ -174,6 +175,7 @@ public class BusquedaAvanzadaController {
     	public ArrayList<String> GetPalabras(String busqueda) {
     		
     		ArrayList<String> palabras = new ArrayList<String>();
+    		busqueda = busqueda + " ";
     		int espacio;
     		int inicio = 0;
     		for(int i=0 ; i<busqueda.length() ; i++) {
