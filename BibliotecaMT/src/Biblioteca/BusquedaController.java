@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -96,7 +99,7 @@ public class BusquedaController {
     }
 
     @FXML
-    void buscar(ActionEvent event) {
+    ArrayList<Number> buscar(ActionEvent event) {
 	
     	ArrayList<Number> coincidencias;
     	
@@ -140,12 +143,12 @@ public class BusquedaController {
 				if(autor == Autor && autor != "") {
 					coincidencias.add(ID);
 				}
-				String fechaCadena= Integer.toString(fecha);
-				if(fechaCadena == Fecha && fechaCadena != "") {
+
+				if(fecha == Fecha && fecha != "") {
 					coincidencias.add(ID);
 				}
-				String fechacadCadena= Integer.toString(fechacad);
-				if(fechacadCadena == Fechacad && fechacadCadena != "") {
+
+				if(fechacad == Fechacad && fechacad != "") {
 					coincidencias.add(ID);
 				}
 				if(editorial == Editorial && editorial != "") {
@@ -169,11 +172,33 @@ public class BusquedaController {
 				
 		
 			}
-	
+		ArrayList<Number> duplicateRowSet = (ArrayList<Number>) Duplicados(coincidencias);  	
+			
 	    } catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("Error en la conexion con la Base");
 		}
+		
     }
+    
+    public Set<?> Duplicados(List<?> coincidencias) {
+        System.out.println("findDuplicatesInList::"+coincidencias);
+        Set<Object> duplicateRowSet=null;
+        duplicateRowSet=new LinkedHashSet<Object>();
+                for(int i=0;i<coincidencias.size();i++){
+                    Object superString=coincidencias.get(i);
+                    System.out.println("findDuplicatesInList::superString::"+superString);
+                    for(int j=0;j<coincidencias.size();j++){
+                        if(i!=j){
+                             Object subString=coincidencias.get(j);
+                             System.out.println("findDuplicatesInList::subString::"+subString);
+                             if(superString.equals(subString)){
+                                 duplicateRowSet.add(coincidencias.get(j));
+                             }
+                        }
+                    }
+                }
+            return duplicateRowSet;
+      }
 
 }
