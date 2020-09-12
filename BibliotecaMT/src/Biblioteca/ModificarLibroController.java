@@ -1,6 +1,7 @@
 package Biblioteca;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
@@ -11,11 +12,8 @@ import javafx.scene.input.MouseEvent;
 
 public class ModificarLibroController {
 
-    @FXML
+	@FXML
     private JFXButton button_modificar;
-
-    @FXML
-    private JFXTextField textfield_tipo;
 
     @FXML
     private JFXTextField textfield_titulo;
@@ -54,12 +52,23 @@ public class ModificarLibroController {
     private JFXDatePicker fechacad;
 
     @FXML
+    private JFXButton button_eliminar;
+
+    @FXML
+    private JFXComboBox<?> tipobox;
+
+    @FXML
     void Atras(MouseEvent event) {
 
     }
 
     @FXML
     void atras(ActionEvent event) {
+
+    }
+
+    @FXML
+    void eliminar(ActionEvent event) {
 
     }
 

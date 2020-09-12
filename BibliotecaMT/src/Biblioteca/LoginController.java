@@ -65,8 +65,7 @@ public class LoginController {
 		            String buscarUsuario = "select * from usuarios";
 		            Statement bu = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 					ResultSet resultado = bu.executeQuery(buscarUsuario);
-					
-					
+				
 				while(resultado.next()) {
 					
 							if(usuario.equalsIgnoreCase(resultado.getString("usuario"))){
@@ -81,24 +80,36 @@ public class LoginController {
 									 lbl_error.setVisible(true);
 								 		}
 								}
+	
 				if(u_correcto == true && c_correcto == true) {
 					
-					if(resultado.getString("usuario").equalsIgnoreCase("admin") && resultado.getString("contra").equals("admin")) {
+					
+					
+					if(usuario.equalsIgnoreCase("admin") && contraseña.equals("admin")) {
+					
 						
-						Parent main = FXMLLoader.load(getClass().getResource("NuevoAdmin.fxml"));
-				        Scene scene = new Scene(main);
+						Parent nuevoadmin = FXMLLoader.load(getClass().getResource("NuevoAdmin.fxml"));
+
+				        Scene scene = new Scene(nuevoadmin);
 				        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 				        window.setScene(scene);
 				        window.show();
-						
-					}else {
-									
+				
+
+					}else{
+	
 						//0-->ADMIN
 						//1-->Bibliotecologo
-									
+					
 						String verificartipo = "select * from usuarios where usuario ='"+usuario+"'" ;
 						Statement vt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 						ResultSet resultadoVT = vt.executeQuery(verificartipo);
+						
+						//System.out.println(resultadoVT);
+						//System.out.println(resultadoVT.getBoolean("tipo_usuario"));
+						//System.out.println(resultadoVT.getBoolean("tipo_usuario"));
+						//System.out.println(resultadoVT.getInt(4));
+						//System.out.println(resultadoVT.getString("tipo_usuario"));
 							
 						if(resultadoVT.getString("tipo_usuario").equals("0")) {
 							

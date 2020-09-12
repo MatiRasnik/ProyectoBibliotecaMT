@@ -52,13 +52,18 @@ public class NuevoAdminController {
     void Nuevo_Admin(ActionEvent event) throws IOException {
     	NuevoAdmin();
     	
-    	Parent main = FXMLLoader.load(getClass().getResource("NuevoAdmin.fxml"));
+    	
+    }
+    
+    @FXML
+    void atras(ActionEvent event) throws IOException {
+    	
+    	Parent main = FXMLLoader.load(getClass().getResource("Admin.fxml"));
+
         Scene scene = new Scene(main);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
-    	
-
     }
 
 	private void NuevoAdmin() {
@@ -66,7 +71,7 @@ public class NuevoAdminController {
 		String usuario = this.textfield_nuevoadmin.getText();
         String contraseña = this.textfield_psswdadmin.getText();
         
-        
+
     	 try {
 	            ConexionBD conexion = new ConexionBD();
 	            Connection con = conexion.conectarConBase();             
@@ -78,6 +83,7 @@ public class NuevoAdminController {
 					
 					if(usuario.equalsIgnoreCase(resultado.getString("usuario"))){
 							lbl_userror.setVisible(true);
+
 					}else{
 						
 						String safeoff = "set sql_safe_updates = 0";
@@ -85,7 +91,7 @@ public class NuevoAdminController {
 						String nuevoAdmin = "UPDATE usuarios SET usuario ='" +usuario +"' , contra ='" +contraseña+ "' WHERE usuario = 'admin'";
 						
 						String safeon = "SET SQL_SAFE_UPDATES=1";
-
+						
 						Statement na = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 						ResultSet nuevo_safeoff = na.executeQuery(safeoff);
 						ResultSet nuevoad = na.executeQuery(nuevoAdmin);

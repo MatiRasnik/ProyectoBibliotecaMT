@@ -22,7 +22,7 @@
             <Font name="Yu Gothic Medium" size="48.0" />
          </font>
       </Label>
-      <JFXButton fx:id="button_iniciarsesion" layoutX="467.0" layoutY="550.0" onAction="#Iniciar_Sesion" ripplerFill="#f8b595" style="-fx-background-color: #282d3e;" text="Iniciar Sesion" textFill="#ececec">
+      <JFXButton fx:id="button_iniciarsesion" layoutX="467.0" layoutY="550.0" onAction="#Iniciar_Sesion" ripplerFill="#f8b595" style="-fx-background-color: #282d3e;" text="Nuevo Usuario" textFill="#ececec">
          <font>
             <Font size="16.0" />
          </font>

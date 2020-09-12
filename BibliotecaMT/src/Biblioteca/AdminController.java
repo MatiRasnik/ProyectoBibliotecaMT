@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 
 public class AdminController {
 
-	@FXML
+    @FXML
     private JFXButton button_busqueda;
 
     @FXML
@@ -42,10 +42,13 @@ public class AdminController {
     private JFXButton button_ingresarstipo;
 
     @FXML
-    private JFXButton button_eliminarusuario;
+    private JFXButton button_modificarusuario;
 
     @FXML
     private JFXButton button_eliminartipo;
+
+    @FXML
+    private JFXButton button_consultas;
 
     @FXML
     void Atras(MouseEvent event) {
@@ -72,6 +75,12 @@ public class AdminController {
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
+    }
+    
+    @FXML
+    void Consultas(ActionEvent event) throws IOException {
+    
+
     }
     
     @FXML
@@ -117,7 +126,7 @@ public class AdminController {
     }
     
     @FXML
-    void EliminarUsuario(ActionEvent event) throws IOException {
+    void ModificarUsuario(ActionEvent event) throws IOException {
     	Parent main = FXMLLoader.load(getClass().getResource("EliminarUsuario.fxml"));
 
         Scene scene = new Scene(main);

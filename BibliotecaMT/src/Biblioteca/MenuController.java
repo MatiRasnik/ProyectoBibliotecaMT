@@ -57,8 +57,6 @@ public class MenuController {
 						String insertAdmin = "INSERT INTO usuarios" + "(id_usuario,usuario,contra,tipo_usuario) values" + "('1','admin', 'admin', '0')";
 						int cant = ia.executeUpdate(insertAdmin);
 						System.out.println("Se a creado el Admin. ");
-						System.out.println("weqweq");
-						
 						
 					}else {
 						System.out.println("Ya existe un Admin. ");

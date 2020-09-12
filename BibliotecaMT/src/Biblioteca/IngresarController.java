@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
@@ -23,11 +24,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class IngresarController {
-
-	 @FXML
-	    private JFXTextField textfield_tipo;
-
-	    @FXML
+	   @FXML
 	    private JFXTextField textfield_titulo;
 
 	    @FXML
@@ -75,10 +72,13 @@ public class IngresarController {
 	    @FXML
 	    private Label lbl_errorexiste;
 
-	@FXML
-	void Atras(MouseEvent event) {
+	    @FXML
+	    private JFXComboBox<?> tipobox;
 
-	}
+	    @FXML
+	    void Atras(MouseEvent event) {
+
+	    }
 
 	@FXML
 	void ButtonIngresar(ActionEvent event) {

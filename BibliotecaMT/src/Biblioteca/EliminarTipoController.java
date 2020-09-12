@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.event.ActionEvent;
@@ -22,31 +23,31 @@ import javafx.stage.Stage;
 
 public class EliminarTipoController {
 
-    @FXML
-    private JFXTextField textfield_tipo;
+	    @FXML
+	    private JFXButton button_eliminar;
 
-    @FXML
-    private JFXButton button_eliminar;
+	    @FXML
+	    private JFXButton buttont_atras;
 
-    @FXML
-    private JFXButton buttont_atras;
+	    @FXML
+	    private ImageView button_atras;
 
-    @FXML
-    private ImageView button_atras;
+	    @FXML
+	    private Label lbl_error;
 
-    @FXML
-    private Label lbl_error;
+	    @FXML
+	    private Label lbl_eliminado;
 
-    @FXML
-    private Label lbl_eliminado;
+	    @FXML
+	    private Label lbl_advertencia;
 
-    @FXML
-    private Label lbl_advertencia;
+	    @FXML
+	    private JFXComboBox<?> tipobox;
 
-    @FXML
-    void Atras(MouseEvent event) {
+	    @FXML
+	    void Atras(MouseEvent event) {
 
-    }
+	    }
 
     @FXML
     void Eliminar_tipo(ActionEvent event) {
