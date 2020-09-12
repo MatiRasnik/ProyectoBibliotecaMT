@@ -122,45 +122,55 @@ public class BusquedaAvanzadaController {
 	    					coincidencias.add(ID);
 	    				}else {
 	    					
-						if(palabra == Autor) {
-	    					coincidencias.add(ID);
-	    				}else {
-	    					
-	    				if(palabra == Editorial) {
-	    					coincidencias.add(ID);
-	    				}else {
-	    					
-	    				if(palabra == Genero) {
-	    					coincidencias.add(ID);
-	    				}else {
-	    					
-	    				if(palabra == Fecha) {
-	    					coincidencias.add(ID);
-	    				}else {
-	    					
-	    				if(palabra == Fechacad) {
-	    					coincidencias.add(ID);
-	    				}else {
-	    					String TipoCadena= Integer.toString(Tipo);
-	    				if(palabra == TipoCadena) {
-	    					coincidencias.add(ID);
-	    				}else {
-	    					String PaginasCadena= Integer.toString(Paginas);
-	    				if(palabra == PaginasCadena) {
-	    					coincidencias.add(ID);
-	    				}else {
-	    					String TomosCadena= Integer.toString(Tomos);
-	    				if(palabra == TomosCadena) {
-	    					coincidencias.add(ID);
-	    				}else {
-	    					String UnidadesCadena= Integer.toString(Unidades);
-	    				if(palabra == UnidadesCadena) {
-	    					coincidencias.add(ID);
-	    				}else {
-	    					String PrecioCadena= Integer.toString(Precio);
-	    				if(palabra == PrecioCadena) {
-	    					coincidencias.add(ID);
-	    				}}}}}}}}}}}
+							if(palabra == Autor) {
+		    					coincidencias.add(ID);
+		    				}else {
+			    					
+			    				if(palabra == Editorial) {
+			    					coincidencias.add(ID);
+			    				}else {
+				    					
+				    				if(palabra == Genero) {
+				    					coincidencias.add(ID);
+				    				}else {
+					    					
+					    				if(palabra == Fecha) {
+					    					coincidencias.add(ID);
+					    				}else {
+						    					
+						    				if(palabra == Fechacad) {
+						    					coincidencias.add(ID);
+						    				}else {
+						    					String TipoCadena= Integer.toString(Tipo);
+							    				if(palabra == TipoCadena) {
+							    					coincidencias.add(ID);
+							    				}else {
+							    					String PaginasCadena= Integer.toString(Paginas);
+								    				if(palabra == PaginasCadena) {
+								    					coincidencias.add(ID);
+								    				}else {
+								    					String TomosCadena= Integer.toString(Tomos);
+									    				if(palabra == TomosCadena) {
+									    					coincidencias.add(ID);
+									    				}else {
+									    					String UnidadesCadena= Integer.toString(Unidades);
+										    				if(palabra == UnidadesCadena) {
+										    					coincidencias.add(ID);
+										    				}else {
+										    					String PrecioCadena= Integer.toString(Precio);
+											    				if(palabra == PrecioCadena) {
+											    					coincidencias.add(ID);
+											    				}
+										    				}
+									    				}
+								    				}
+							    				}
+						    				}
+					    				}
+				    				}
+			    				}
+		    				}
+						}
 	    				indice++;
 	    				coincidencias = BusquedaRecursiva(palabras,indice,coincidencias);	
 	    			}	

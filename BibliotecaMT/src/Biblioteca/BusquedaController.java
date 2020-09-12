@@ -1,6 +1,12 @@
 package Biblioteca;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -91,7 +97,83 @@ public class BusquedaController {
 
     @FXML
     void buscar(ActionEvent event) {
-
+	
+    	ArrayList<Number> coincidencias;
+    	
+		String titulo = textfield_titulo.getText();
+		String autor = textfield_autor.getText();
+		LocalDate fecha = this.fecha.getValue();
+		LocalDate fechacad = this.fechacad.getValue();
+		String editorial = textfield_editorial.getText();
+		String genero = textfield_genero.getText();
+		int paginas = Integer.parseInt(textfield_paginas.getText());
+		int tomos = Integer.parseInt(textfield_tomos.getText());
+		int unidades = Integer.parseInt(textfield_unidades.getText());
+		int precio = Integer.parseInt(textfield_precio.getText());
+		
+		try {
+			
+			ConexionBD conexion = new ConexionBD();
+	        Connection con = conexion.conectarConBase(); 
+	        String buscarAdmin = "select * from Almacen";
+	        Statement cs =  con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet resultado = cs.executeQuery(buscarAdmin);
+			
+			while (resultado.next())
+			{
+				String Titulo = resultado.getString("titulo");
+				String Autor = resultado.getString("autor");
+				String Editorial = resultado.getString("editorial");
+				String Genero = resultado.getString("genero");
+				String Fecha = resultado.getString("fecha");
+				String Fechacad = resultado.getString("fechacad");
+				int Tipo = resultado.getInt("tipo");
+				int Paginas = resultado.getInt("paginas");
+				int Tomos = resultado.getInt("tomos");
+				int Unidades = resultado.getInt("unidades");
+				int Precio = resultado.getInt("precios");
+				int ID = resultado.getInt("id");
+				
+				if(titulo == Titulo && titulo != "") {
+					coincidencias.add(ID);
+				}
+				if(autor == Autor && autor != "") {
+					coincidencias.add(ID);
+				}
+				String fechaCadena= Integer.toString(fecha);
+				if(fechaCadena == Fecha && fechaCadena != "") {
+					coincidencias.add(ID);
+				}
+				String fechacadCadena= Integer.toString(fechacad);
+				if(fechacadCadena == Fechacad && fechacadCadena != "") {
+					coincidencias.add(ID);
+				}
+				if(editorial == Editorial && editorial != "") {
+					coincidencias.add(ID);
+				}
+				if(genero == Genero && genero != "") {
+					coincidencias.add(ID);
+				}
+				if(paginas == Paginas) {
+					coincidencias.add(ID);
+				}
+				if(tomos == Tomos) {
+					coincidencias.add(ID);
+				}
+				if(unidades == Unidades) {
+					coincidencias.add(ID);
+				}
+				if(precio == Precio) {
+					coincidencias.add(ID);
+				}
+				
+		
+			}
+	
+	    } catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Error en la conexion con la Base");
+		}
     }
 
 }
