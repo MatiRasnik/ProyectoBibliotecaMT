@@ -19,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 
 public class BusquedaAvanzadaController {
 
+
     @FXML
     private JFXButton buttont_atras;
 
@@ -26,37 +27,7 @@ public class BusquedaAvanzadaController {
     private ImageView button_atras;
 
     @FXML
-    private JFXTextField textfield_tipo;
-
-    @FXML
-    private JFXTextField textfield_titulo;
-
-    @FXML
-    private JFXTextField textfield_autor;
-
-    @FXML
-    private JFXTextField textfield_editorial;
-
-    @FXML
-    private JFXTextField textfield_genero;
-
-    @FXML
-    private JFXTextField textfield_paginas;
-
-    @FXML
-    private JFXTextField textfield_tomos;
-
-    @FXML
-    private JFXTextField textfield_unidades;
-
-    @FXML
-    private JFXTextField textfield_precio;
-
-    @FXML
-    private JFXDatePicker fecha;
-
-    @FXML
-    private JFXDatePicker fechacad;
+    private JFXTextField textfield_busqueda;
 
     @FXML
     private JFXButton button_buscar;
@@ -71,31 +42,23 @@ public class BusquedaAvanzadaController {
 
     }
 
+
     @FXML
     void buscar(ActionEvent event) {
+    	
 
     }
     public class BuscadorAvanzado {
 
-    	public ArrayList<Number> BusquedaRecursiva(ArrayList<String> palabras,int indice,ArrayList<Number> coincidencias) {
+   
+
+		public ArrayList<Number> BusquedaRecursiva(ArrayList<String> palabras,int indice,ArrayList<Number> coincidencias) {
     		
     		if(indice > palabras.size())
     		{
 	    		String palabra = palabras.get(indice);
 	    		palabra = palabra.trim();
 	    		
-	    		int id = Integer.parseInt(textfield_tipo.getText());
-	    		int tipo = Integer.parseInt(textfield_tipo.getText());
-	    		String titulo = textfield_titulo.getText();
-	    		String autor = textfield_autor.getText();
-	    		LocalDate fecha = this.fecha.getValue();
-	    		LocalDate fechacad = this.fechacad.getValue();
-	    		String editorial = textfield_editorial.getText();
-	    		String genero = textfield_genero.getText();
-	    		int paginas = Integer.parseInt(textfield_paginas.getText());
-	    		int tomos = Integer.parseInt(textfield_tomos.getText());
-	    		int unidades = Integer.parseInt(textfield_unidades.getText());
-	    		int precio = Integer.parseInt(textfield_precio.getText());
 	    		try
 	    		{
 	    			ConexionBD conexion = new ConexionBD();

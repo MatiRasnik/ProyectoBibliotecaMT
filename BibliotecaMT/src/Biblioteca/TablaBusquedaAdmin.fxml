@@ -11,9 +11,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1047.0" style="-fx-background-color: #383e56;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Biblioteca.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1047.0" style="-fx-background-color: #383e56;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Biblioteca.TablaBusquedaAdminController">
    <children>
-      <JFXButton fx:id="button_buscar" layoutX="398.0" layoutY="602.0" onAction="#buscar" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="MAS INFORMACION" textFill="#ececec">
+      <JFXButton fx:id="button_buscar" layoutX="273.0" layoutY="602.0" onAction="#buscar" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="MAS INFORMACION" textFill="#ececec">
          <font>
             <Font size="24.0" />
          </font>
@@ -39,10 +39,10 @@
       <VBox alignment="TOP_CENTER" layoutX="141.0" layoutY="158.0" prefHeight="408.0" prefWidth="790.0">
          <children>
             <TableView prefHeight="416.0" prefWidth="790.0">
-              <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
-              </columns>
+               <columns>
+                  <TableColumn prefWidth="75.0" text="C1" />
+                  <TableColumn prefWidth="75.0" text="C2" />
+               </columns>
             </TableView>
          </children>
       </VBox>
@@ -51,5 +51,10 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <JFXButton fx:id="button_modificar" layoutX="570.0" layoutY="602.0" onAction="#modificar" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="MODIFICAR" textFill="#ececec">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

@@ -22,17 +22,12 @@ import javafx.stage.Stage;
 
 public class NuevoAdminController {
 
+
     @FXML
     private JFXTextField textfield_nuevoadmin;
 
     @FXML
     private JFXButton button_nuevoadmin;
-
-    @FXML
-    private JFXButton buttont_atras;
-
-    @FXML
-    private ImageView button_atras;
 
     @FXML
     private Label lbl_uscorrecto;
@@ -43,29 +38,19 @@ public class NuevoAdminController {
     @FXML
     private JFXTextField textfield_psswdadmin;
 
-    @FXML
-    void Atras(MouseEvent event) {
-
-    }
 
     @FXML
     void Nuevo_Admin(ActionEvent event) throws IOException {
     	NuevoAdmin();
-    	
-    	
-    }
-    
-    @FXML
-    void atras(ActionEvent event) throws IOException {
-    	
     	Parent main = FXMLLoader.load(getClass().getResource("Admin.fxml"));
 
         Scene scene = new Scene(main);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
+    	
     }
-
+    
 	private void NuevoAdmin() {
 		
 		String usuario = this.textfield_nuevoadmin.getText();

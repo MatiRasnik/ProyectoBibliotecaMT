@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 
 public class BusquedaController {
 
-    @FXML
+	@FXML
     private JFXButton buttont_atras;
 
     @FXML
@@ -74,6 +74,7 @@ public class BusquedaController {
     void Atras(MouseEvent event) {
 
     }
+
 
     @FXML
     void ButtonAvanzado(ActionEvent event) throws IOException {
@@ -140,11 +141,11 @@ public class BusquedaController {
 				if(autor == Autor && autor != "") {
 					coincidencias.add(ID);
 				}
-				String fechaCadena= Integer.toString(fecha);
+				String fechaCadena= this.fecha.getValue();
 				if(fechaCadena == Fecha && fechaCadena != "") {
 					coincidencias.add(ID);
 				}
-				String fechacadCadena= Integer.toString(fechacad);
+				String fechacadCadena= this.fechacad.getValue();
 				if(fechacadCadena == Fechacad && fechacadCadena != "") {
 					coincidencias.add(ID);
 				}
@@ -169,7 +170,12 @@ public class BusquedaController {
 				
 		
 			}
-	
+			
+			Parent main = FXMLLoader.load(getClass().getResource("TablaBusqueda.fxml"));
+	        Scene scene = new Scene(main);
+	        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+	        window.setScene(scene);
+	        window.show();
 	    } catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("Error en la conexion con la Base");

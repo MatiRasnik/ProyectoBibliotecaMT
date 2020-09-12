@@ -52,6 +52,8 @@ public class EliminarTipoController {
     @FXML
     void Eliminar_tipo(ActionEvent event) {
     	eliminartipo();
+    		
+    	}
     }
 
     private void eliminartipo() {

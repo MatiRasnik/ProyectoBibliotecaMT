@@ -16,25 +16,38 @@ import javafx.stage.Stage;
 
 public class BiblotecologoController {
 
-    @FXML
-    private JFXButton buttont_atras;
+	   @FXML
+	    private JFXButton button_busqueda;
 
-    @FXML
-    private ImageView button_atras;
+	    @FXML
+	    private JFXButton buttont_atras;
 
-    @FXML
-    private JFXButton button_ingresar;
+	    @FXML
+	    private ImageView button_atras;
 
-    @FXML
-    private JFXButton button_busqueda_avanzada;
+	    @FXML
+	    private JFXButton button_ingresar;
 
-    @FXML
-    private JFXButton button_ingresartipo;
+	    @FXML
+	    private JFXButton button_busqueda_avanzada;
 
-    @FXML
-    void Atras(MouseEvent event) {
+	    @FXML
+	    private JFXButton button_ingresartipo;
 
-    }
+	    @FXML
+	    void Atras(MouseEvent event) {
+
+	    }
+	    
+	    @FXML
+	    void Buscar(ActionEvent event) throws IOException {
+	    	Parent main = FXMLLoader.load(getClass().getResource("Busqueda.fxml"));
+
+	        Scene scene = new Scene(main);
+	        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+	        window.setScene(scene);
+	        window.show();
+	    }
 
     @FXML
     void Busqueda_Avanzada(ActionEvent event) throws IOException {
@@ -49,7 +62,7 @@ public class BiblotecologoController {
 
     @FXML
     void Ingresar(ActionEvent event) throws IOException {
-    	Parent main = FXMLLoader.load(getClass().getResource("Busqueda.fxml"));
+    	Parent main = FXMLLoader.load(getClass().getResource("Ingresar.fxml"));
 
         Scene scene = new Scene(main);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
