@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.event.ActionEvent;
@@ -41,6 +42,18 @@ public class IngresarTipoController {
 	private Label lbl_creado;
 
 	@FXML
+	private JFXCheckBox checkPaginas;
+
+	@FXML
+	private JFXCheckBox checkPrecio;
+
+	@FXML
+	private JFXCheckBox checkTomos;
+
+	@FXML
+	private JFXCheckBox checkFechacad;
+
+	@FXML
 	void Atras(MouseEvent event) {
 
 	}
@@ -52,39 +65,55 @@ public class IngresarTipoController {
 	}
 
 	private void ingresartipo() {
-    	try {
-    		String nuevotipo = textfield_tipo.getText();
-    		
+		try {
+			String nuevotipo = textfield_tipo.getText();
+
 			ConexionBD conexion = new ConexionBD();
 			Connection con = conexion.conectarConBase();
 			String documentos = "select * from tipo_documento";
 			Statement doc = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet resultado = doc.executeQuery(documentos);
 
+			int paginas = 0;
+			int precio = 0;
+			int tomos = 0;
+			int fechacad = 0;
+
+			if (checkPaginas.isSelected()) {
+				paginas = 1;
+			}
+			if (checkPrecio.isSelected()) {
+				precio = 1;
+			}
+			if (checkTomos.isSelected()) {
+				tomos = 1;
+			}
+			if (checkFechacad.isSelected()) {
+				fechacad = 1;
+			}
+
 			while (resultado.next()) {
-				
-					if (nuevotipo.equalsIgnoreCase(resultado.getString("tipodoc"))) {
-						lbl_error.setVisible(true);
 
-					} else {
-						String insertString = "INSERT INTO usuarios"
-								+ "(id, tipodoc) "
-								+ "values" + "('" + nuevotipo  + "')";
-						int cant = doc.executeUpdate(insertString);
-						lbl_creado.setVisible(true);
-					}
+				if (nuevotipo.equalsIgnoreCase(resultado.getString("tipodoc"))) {
+					lbl_error.setVisible(true);
+
+				} else {
+					String insertString = "INSERT INTO tipo_documento"
+							+ "(id, tipodoc, paginas, precio, tomos, fechacad) " + "values" + "('" + nuevotipo + "','"
+							+ paginas + "','" + precio + "','" + tomos + "','" + fechacad + "')";
+					int cant = doc.executeUpdate(insertString);
+					lbl_creado.setVisible(true);
 				}
-
+			}
 
 			con.close();
 			doc.close();
-		}catch(
+		} catch (
 
-	SQLException e)
-	{
-		e.printStackTrace();
-		System.out.println("Error en la conexion con la Base");
-	}
+		SQLException e) {
+			e.printStackTrace();
+			System.out.println("Error en la conexion con la Base");
+		}
 
 	}
 

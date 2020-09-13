@@ -2,7 +2,6 @@ package Biblioteca;
 
 import java.sql.*;
 
-import java.sql.*;
 import javax.swing.JOptionPane;
 
 public class ConexionBD {

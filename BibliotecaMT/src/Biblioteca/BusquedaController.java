@@ -71,7 +71,7 @@ public class BusquedaController {
     private JFXButton button_avanzado;
 
     @FXML
-    private JFXComboBox<?> tipobox;
+    private JFXComboBox<String> tipobox;
 
     @FXML
     void Atras(MouseEvent event) {
@@ -144,7 +144,7 @@ public class BusquedaController {
 					coincidencias.add(ID);
 				}
 
-				if(fecha == Fecha && fecha != "") {
+				if(Fecha.equals(this.fecha.getValue()) && this.fecha.getValue() != null) {
 					coincidencias.add(ID);
 				}
 

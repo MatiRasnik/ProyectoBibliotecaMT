@@ -1,20 +1,25 @@
 package Biblioteca;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,62 +28,62 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class IngresarController {
-	   @FXML
-	    private JFXTextField textfield_titulo;
+public class IngresarController implements Initializable {
+	@FXML
+	private JFXTextField textfield_titulo;
 
-	    @FXML
-	    private JFXTextField textfield_autor;
+	@FXML
+	private JFXTextField textfield_autor;
 
-	    @FXML
-	    private JFXTextField textfield_editorial;
+	@FXML
+	private JFXTextField textfield_editorial;
 
-	    @FXML
-	    private JFXTextField textfield_genero;
+	@FXML
+	private JFXTextField textfield_genero;
 
-	    @FXML
-	    private JFXTextField textfield_paginas;
+	@FXML
+	private JFXTextField textfield_paginas;
 
-	    @FXML
-	    private JFXTextField textfield_tomos;
+	@FXML
+	private JFXTextField textfield_tomos;
 
-	    @FXML
-	    private JFXTextField textfield_unidades;
+	@FXML
+	private JFXTextField textfield_unidades;
 
-	    @FXML
-	    private JFXTextField textfield_precio;
+	@FXML
+	private JFXTextField textfield_precio;
 
-	    @FXML
-	    private JFXDatePicker fecha;
+	@FXML
+	private JFXDatePicker fecha;
 
-	    @FXML
-	    private JFXDatePicker fechacad;
+	@FXML
+	private JFXDatePicker fechacad;
 
-	    @FXML
-	    private JFXButton button_ingresar;
+	@FXML
+	private JFXButton button_ingresar;
 
-	    @FXML
-	    private JFXButton buttont_atras;
+	@FXML
+	private JFXButton buttont_atras;
 
-	    @FXML
-	    private ImageView button_atras;
+	@FXML
+	private ImageView button_atras;
 
-	    @FXML
-	    private Label lbl_correcto;
+	@FXML
+	private Label lbl_correcto;
 
-	    @FXML
-	    private Label lbl_error;
+	@FXML
+	private Label lbl_error;
 
-	    @FXML
-	    private Label lbl_errorexiste;
+	@FXML
+	private Label lbl_errorexiste;
 
-	    @FXML
-	    private JFXComboBox<?> tipobox;
+	@FXML
+	private JFXComboBox<String> tipobox;
 
-	    @FXML
-	    void Atras(MouseEvent event) {
+	@FXML
+	void Atras(MouseEvent event) {
 
-	    }
+	}
 
 	@FXML
 	void ButtonIngresar(ActionEvent event) {
@@ -88,7 +93,7 @@ public class IngresarController {
 
 	private void IngresarDocumento() {
 
-		int tipo = Integer.parseInt(textfield_tipo.getText());
+		String tipo = this.tipobox.getValue();
 		String titulo = textfield_titulo.getText();
 		String autor = textfield_autor.getText();
 		LocalDate fecha = this.fecha.getValue();
@@ -110,7 +115,7 @@ public class IngresarController {
 
 			while (resultado.next()) {
 
-				if (tipo != 0 || titulo == null || fecha == null || unidades != 0) {
+				if (tipo != null || titulo == null || fecha == null || unidades != 0) {
 					lbl_error.setVisible(true);
 				} else {
 					if (titulo.equalsIgnoreCase(resultado.getString("titulo"))) {
@@ -139,13 +144,102 @@ public class IngresarController {
 
 	@FXML
 	void atras(ActionEvent event) throws IOException {
-		
+
 		Parent main = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-        Scene scene = new Scene(main);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
+		Scene scene = new Scene(main);
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
 
 	}
 
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+		tipobox.setItems(opciones());
+		tipobox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
+			String tipo = newValue;
+
+			try {
+
+				ConexionBD conexion = new ConexionBD();
+				Connection con = conexion.conectarConBase();
+				String buscar = "SELECT * FROM tipo_documento";
+
+				ResultSet resultado = con.createStatement().executeQuery(buscar);
+
+				boolean encontrado = false;
+
+				while (resultado.next()) {
+					if (tipo.equals(resultado.getString("tipodoc"))) {
+						encontrado = true;
+						break;
+					}
+				}
+				if (encontrado == true) {
+					if (resultado.getString("paginas").equals("0")) {
+						textfield_paginas.setText("");
+						textfield_paginas.setEditable(false);
+						textfield_paginas.setDisable(true);
+					} else {
+						textfield_paginas.setEditable(true);
+						textfield_paginas.setDisable(false);
+					}
+
+					if (resultado.getString("tomos").equals("0")) {
+						textfield_tomos.setText("");
+						textfield_tomos.setEditable(false);
+						textfield_tomos.setDisable(true);
+					} else {
+						textfield_tomos.setEditable(true);
+						textfield_tomos.setDisable(false);
+					}
+
+					if (resultado.getString("precio").equals("0")) {
+						textfield_precio.setText("");
+						textfield_precio.setEditable(false);
+						textfield_precio.setDisable(true);
+					} else {
+						textfield_precio.setEditable(true);
+						textfield_precio.setDisable(false);
+					}
+					
+					if (resultado.getString("fechacad").equals("0")) {
+						fechacad.setEditable(false);
+						fechacad.setDisable(true);
+					} else {
+						fechacad.setEditable(true);
+						fechacad.setDisable(false);
+					}
+
+				}
+
+			} catch (SQLException e) {
+				System.out.println("Error");
+			}
+		});
+	}
+
+	private ObservableList<String> opciones() {
+
+		ObservableList<String> opciones = FXCollections.observableArrayList();
+		opciones.removeAll(opciones);
+
+		try {
+			String buscar = "SELECT * FROM tipo_documento";
+			opciones = FXCollections.observableArrayList();
+			ConexionBD conexion = new ConexionBD();
+			Connection con = conexion.conectarConBase();
+
+			ResultSet optipo = con.createStatement().executeQuery(buscar);
+
+			while (optipo.next()) {
+				opciones.add(optipo.getString("tipodoc"));
+			}
+		} catch (Exception e) {
+			System.out.println("Error");
+		}
+
+		return opciones;
+	}
 }
