@@ -1,24 +1,23 @@
 package Biblioteca;
 
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class BusquedaAvanzadaController {
 
@@ -29,38 +28,8 @@ public class BusquedaAvanzadaController {
     private ImageView button_atras;
 
     @FXML
-    private JFXTextField textfield_tipo;
-
-    @FXML
-    private JFXTextField textfield_titulo;
-
-    @FXML
-    private JFXTextField textfield_autor;
-
-    @FXML
-    private JFXTextField textfield_editorial;
-
-    @FXML
-    private JFXTextField textfield_genero;
-
-    @FXML
-    private JFXTextField textfield_paginas;
-
-    @FXML
-    private JFXTextField textfield_tomos;
-
-    @FXML
-    private JFXTextField textfield_unidades;
-
-    @FXML
-    private JFXTextField textfield_precio;
-
-    @FXML
-    private JFXDatePicker fecha;
-
-    @FXML
-    private JFXDatePicker fechacad;
-
+    private JFXTextField textfield_busqueda;
+    
     @FXML
     private JFXButton button_buscar;
 
@@ -71,97 +40,95 @@ public class BusquedaAvanzadaController {
 
     @FXML
     void atras(ActionEvent event) {
-
+    	Parent main = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        Scene scene = new Scene(main);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
     }
 
     @FXML
     void buscar(ActionEvent event) {
-
-    }
-    public class BuscadorAvanzado {
-    	
-    	String busqueda;// se inicializa cuando le dan al boton
+    	String busqueda = textfield_busqueda.getText();
     	ArrayList<String> palabras = GetPalabras(busqueda);
     	int indice = 0;
-    	ArrayList<Number> coincidencias;
+    	ArrayList<Number> coincidencias = null;
     	ArrayList<Number> ordenado = BusquedaRecursiva(palabras,indice,coincidencias);
     	//SE muestran por pantalla todo lo que hay adentro de ordenado
-    	
-    	
-    	
-    	
-    	public ArrayList<Number> BusquedaRecursiva(ArrayList<String> palabras,int indice,ArrayList<Number> coincidencias) {
+    }
+	
+	
+	public ArrayList<Number> BusquedaRecursiva(ArrayList<String> palabras,int indice,ArrayList<Number> coincidencias) {
+		
+		if(indice > palabras.size())
+		{
+    		String palabra = palabras.get(indice);
+    		palabra = palabra.trim();
     		
-    		if(indice > palabras.size())
+    		try
     		{
-	    		String palabra = palabras.get(indice);
-	    		palabra = palabra.trim();
-	    		
-	    		try
-	    		{
-	    			ConexionBD conexion = new ConexionBD();
-	    	        Connection con = conexion.conectarConBase(); 
-	    	        String buscarAdmin = "select * from Almacen";
-	    	        Statement cs =  con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-	    			ResultSet resultado = cs.executeQuery(buscarAdmin);
-	    			while (resultado.next())
-	    			{	
-	    				String Titulo = resultado.getString("titulo");
-	    				String Autor = resultado.getString("autor");
-	    				String Editorial = resultado.getString("editorial");
-	    				String Genero = resultado.getString("genero");
-	    				String Fecha = resultado.getString("fecha");
-	    				String Fechacad = resultado.getString("fechacad");
-	    				int Tipo = resultado.getInt("tipo");
-	    				int Paginas = resultado.getInt("paginas");
-	    				int Tomos = resultado.getInt("tomos");
-	    				int Unidades = resultado.getInt("unidades");
-	    				int Precio = resultado.getInt("precios");
-	    				int ID = resultado.getInt("id");
-	    				
-	    				if(palabra == Titulo) {
+    			ConexionBD conexion = new ConexionBD();
+    	        Connection con = conexion.conectarConBase(); 
+    	        String buscarAdmin = "select * from Almacen";
+    	        Statement cs =  con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+    			ResultSet resultado = cs.executeQuery(buscarAdmin);
+    			while (resultado.next())
+    			{	
+    				String Titulo = resultado.getString("titulo");
+    				String Autor = resultado.getString("autor");
+    				String Editorial = resultado.getString("editorial");
+    				String Genero = resultado.getString("genero");
+    				String Fecha = resultado.getString("fecha");
+    				String Fechacad = resultado.getString("fechacad");
+    				int Tipo = resultado.getInt("tipo");
+    				int Paginas = resultado.getInt("paginas");
+    				int Tomos = resultado.getInt("tomos");
+    				int Unidades = resultado.getInt("unidades");
+    				int Precio = resultado.getInt("precios");
+    				int ID = resultado.getInt("id");
+    				
+    				if(palabra == Titulo) {
+    					coincidencias.add(ID);
+    				}else {
+    					
+						if(palabra == Autor) {
 	    					coincidencias.add(ID);
 	    				}else {
-	    					
-							if(palabra == Autor) {
+		    					
+		    				if(palabra == Editorial) {
 		    					coincidencias.add(ID);
 		    				}else {
 			    					
-			    				if(palabra == Editorial) {
+			    				if(palabra == Genero) {
 			    					coincidencias.add(ID);
 			    				}else {
 				    					
-				    				if(palabra == Genero) {
+				    				if(palabra == Fecha) {
 				    					coincidencias.add(ID);
 				    				}else {
 					    					
-					    				if(palabra == Fecha) {
+					    				if(palabra == Fechacad) {
 					    					coincidencias.add(ID);
 					    				}else {
-						    					
-						    				if(palabra == Fechacad) {
+					    					String TipoCadena= Integer.toString(Tipo);
+						    				if(palabra == TipoCadena) {
 						    					coincidencias.add(ID);
 						    				}else {
-						    					String TipoCadena= Integer.toString(Tipo);
-							    				if(palabra == TipoCadena) {
+						    					String PaginasCadena= Integer.toString(Paginas);
+							    				if(palabra == PaginasCadena) {
 							    					coincidencias.add(ID);
 							    				}else {
-							    					String PaginasCadena= Integer.toString(Paginas);
-								    				if(palabra == PaginasCadena) {
+							    					String TomosCadena= Integer.toString(Tomos);
+								    				if(palabra == TomosCadena) {
 								    					coincidencias.add(ID);
 								    				}else {
-								    					String TomosCadena= Integer.toString(Tomos);
-									    				if(palabra == TomosCadena) {
+								    					String UnidadesCadena= Integer.toString(Unidades);
+									    				if(palabra == UnidadesCadena) {
 									    					coincidencias.add(ID);
 									    				}else {
-									    					String UnidadesCadena= Integer.toString(Unidades);
-										    				if(palabra == UnidadesCadena) {
+									    					String PrecioCadena= Integer.toString(Precio);
+										    				if(palabra == PrecioCadena) {
 										    					coincidencias.add(ID);
-										    				}else {
-										    					String PrecioCadena= Integer.toString(Precio);
-											    				if(palabra == PrecioCadena) {
-											    					coincidencias.add(ID);
-											    				}
 										    				}
 									    				}
 								    				}
@@ -171,50 +138,51 @@ public class BusquedaAvanzadaController {
 				    				}
 			    				}
 		    				}
-						}
-	    				indice++;
-	    				coincidencias = BusquedaRecursiva(palabras,indice,coincidencias);	
-	    			}	
-	    		} catch (SQLException e) {
-	    			e.printStackTrace();
-	    			System.out.println("Error en la conexion con la Base");
-	    		}
-    		}
-    		ArrayList<Number> ordenado = null;
-    		int a=0;
-    		for(int i=0;i<coincidencias.size();i++)
-    		{
-    			for(int j=0;j<coincidencias.size();j++) {
-	    			if(coincidencias.get(i) == ordenado.get(j)) {
-	    				a = 1;
-	    			}	
-    			}
-    			if(a==0) {
-    				ordenado.add(coincidencias.get(i));
-    			}
-    			a=0;
-    		}
-
-    		
-    	return ordenado;	
-    	}
-    	
-    	public ArrayList<String> GetPalabras(String busqueda) {
-    		
-    		ArrayList<String> palabras = new ArrayList<String>();
-    		busqueda = busqueda + " ";
-    		int espacio;
-    		int inicio = 0;
-    		for(int i=0 ; i<busqueda.length() ; i++) {
-    			if(busqueda.charAt(i) == ' '){
-    				 if(i != 0) {
-    					 espacio = i;
-    					 palabras.add(busqueda.substring(inicio,espacio));
-    					 inicio = i;
-    				 }
+	    				}
+					}
+    				indice++;
+    				coincidencias = BusquedaRecursiva(palabras,indice,coincidencias);	
     			}	
+    		} catch (SQLException e) {
+    			e.printStackTrace();
+    			System.out.println("Error en la conexion con la Base");
     		}
-    		return palabras;
-    	}
-    }
+		}
+		ArrayList<Number> ordenado = null;
+		int a=0;
+		for(int i=0;i<coincidencias.size();i++)
+		{
+			for(int j=0;j<coincidencias.size();j++) {
+    			if(coincidencias.get(i) == ordenado.get(j)) {
+    				a = 1;
+    			}	
+			}
+			if(a==0) {
+				ordenado.add(coincidencias.get(i));
+			}
+			a=0;
+		}
+
+		
+	return ordenado;	
+	}
+	
+	public ArrayList<String> GetPalabras(String busqueda) {
+		
+		ArrayList<String> palabras = new ArrayList<String>();
+		busqueda = busqueda + " ";
+		int espacio;
+		int inicio = 0;
+		for(int i=0 ; i<busqueda.length() ; i++) {
+			if(busqueda.charAt(i) == ' '){
+				 if(i != 0) {
+					 espacio = i;
+					 palabras.add(busqueda.substring(inicio,espacio));
+					 inicio = i;
+				 }
+			}	
+		}
+		return palabras;
+	}
 }
+
