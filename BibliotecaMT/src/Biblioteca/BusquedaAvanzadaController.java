@@ -97,18 +97,6 @@ public class BusquedaAvanzadaController {
 	    		String palabra = palabras.get(indice);
 	    		palabra = palabra.trim();
 	    		
-	    		int id = Integer.parseInt(textfield_tipo.getText());
-	    		int tipo = Integer.parseInt(textfield_tipo.getText());
-	    		String titulo = textfield_titulo.getText();
-	    		String autor = textfield_autor.getText();
-	    		LocalDate fecha = this.fecha.getValue();
-	    		LocalDate fechacad = this.fechacad.getValue();
-	    		String editorial = textfield_editorial.getText();
-	    		String genero = textfield_genero.getText();
-	    		int paginas = Integer.parseInt(textfield_paginas.getText());
-	    		int tomos = Integer.parseInt(textfield_tomos.getText());
-	    		int unidades = Integer.parseInt(textfield_unidades.getText());
-	    		int precio = Integer.parseInt(textfield_precio.getText());
 	    		try
 	    		{
 	    			ConexionBD conexion = new ConexionBD();
@@ -192,7 +180,7 @@ public class BusquedaAvanzadaController {
 	    			System.out.println("Error en la conexion con la Base");
 	    		}
     		}
-    		ArrayList<Number> ordenado;
+    		ArrayList<Number> ordenado = null;
     		int a=0;
     		for(int i=0;i<coincidencias.size();i++)
     		{

@@ -71,7 +71,7 @@ public class BusquedaController {
     private JFXButton button_avanzado;
 
     @FXML
-    private JFXComboBox<?> tipobox;
+    private JFXComboBox<String> tipobox;
 
     @FXML
     void Atras(MouseEvent event) {
@@ -101,7 +101,7 @@ public class BusquedaController {
     @FXML
     ArrayList<Number> buscar(ActionEvent event) {
 	
-    	ArrayList<Number> coincidencias;
+    	ArrayList<Number> coincidencias = null;
     	
 		String titulo = textfield_titulo.getText();
 		String autor = textfield_autor.getText();
@@ -122,8 +122,8 @@ public class BusquedaController {
 	        Statement cs =  con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet resultado = cs.executeQuery(buscarAdmin);
 			
-			while (resultado.next())
-			{
+			while (resultado.next()){
+				
 				String Titulo = resultado.getString("titulo");
 				String Autor = resultado.getString("autor");
 				String Editorial = resultado.getString("editorial");
@@ -144,11 +144,11 @@ public class BusquedaController {
 					coincidencias.add(ID);
 				}
 
-				if(fecha == Fecha && fecha != "") {
+				if(Fecha.equals(this.fecha.getValue()) && this.fecha.getValue() != null) {
 					coincidencias.add(ID);
 				}
 
-				if(fechacad == Fechacad && fechacad != "") {
+				if(Fechacad.equals(this.fechacad.getValue()) && this.fechacad.getValue() != null) {
 					coincidencias.add(ID);
 				}
 
@@ -185,7 +185,7 @@ public class BusquedaController {
 			System.out.println("Error en la conexion con la Base");
 		}
 		
-		ArrayList<Number> ordenado;
+		ArrayList<Number> ordenado = null;
 		int a=0;
 		for(int i=0;i<coincidencias.size();i++)
 		{
