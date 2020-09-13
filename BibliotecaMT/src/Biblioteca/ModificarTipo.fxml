@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -9,14 +10,14 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1047.0" style="-fx-background-color: #383e56;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Biblioteca.EliminarTipoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1047.0" style="-fx-background-color: #383e56;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Biblioteca.ModificarTipoController">
    <children>
       <Label layoutX="447.0" layoutY="48.0" text="BIBMT" textFill="#ececec">
          <font>
             <Font name="Yu Gothic Medium" size="48.0" />
          </font>
       </Label>
-      <JFXButton fx:id="button_eliminar" layoutX="484.0" layoutY="550.0" onAction="#Eliminar_tipo" ripplerFill="#f8b595" style="-fx-background-color: #282d3e;" text="Eliminar" textFill="#ececec">
+      <JFXButton fx:id="button_eliminar" layoutX="565.0" layoutY="550.0" onAction="#Eliminar_tipo" ripplerFill="#f8b595" style="-fx-background-color: #282d3e;" text="Eliminar" textFill="#ececec">
          <font>
             <Font size="16.0" />
          </font>
@@ -50,5 +51,14 @@
          </font>
       </Label>
       <JFXComboBox fx:id="tipobox" focusColor="#f8b595" layoutX="419.0" layoutY="319.0" prefHeight="31.0" prefWidth="211.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec" />
+      <JFXCheckBox fx:id="checkPaginas" checkedColor="#f8b595" layoutX="220.0" layoutY="483.0" text="Paginas" textFill="#ececec" unCheckedColor="#ececec" />
+      <JFXCheckBox fx:id="checkPrecio" checkedColor="#f8b595" layoutX="369.0" layoutY="483.0" text="Precio" textFill="#ececec" unCheckedColor="#ececec" />
+      <JFXCheckBox fx:id="checkTomos" checkedColor="#f8b595" layoutX="532.0" layoutY="483.0" text="Tomos" textFill="#ececec" unCheckedColor="#ececec" />
+      <JFXCheckBox fx:id="checkFechacad" checkedColor="#f8b595" layoutX="666.0" layoutY="483.0" text="Fecha de caducidad" textFill="#ececec" unCheckedColor="#ececec" />
+      <JFXButton fx:id="button_modificar" layoutX="358.0" layoutY="550.0" onAction="#Modificar_tipo" ripplerFill="#f8b595" style="-fx-background-color: #282d3e;" text="Modificar" textFill="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

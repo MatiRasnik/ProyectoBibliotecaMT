@@ -22,77 +22,67 @@ import javafx.stage.Stage;
 
 public class NuevoAdminController {
 
+	@FXML
+	private JFXTextField textfield_nuevoadmin;
 
-    @FXML
-    private JFXTextField textfield_nuevoadmin;
+	@FXML
+	private JFXButton button_nuevoadmin;
 
-    @FXML
-    private JFXButton button_nuevoadmin;
+	@FXML
+	private Label lbl_uscorrecto;
 
-    @FXML
-    private Label lbl_uscorrecto;
+	@FXML
+	private Label lbl_userror;
 
-    @FXML
-    private Label lbl_userror;
+	@FXML
+	private JFXTextField textfield_psswdadmin;
 
-    @FXML
-    private JFXTextField textfield_psswdadmin;
+	@FXML
+	void Nuevo_Admin(ActionEvent event) throws IOException {
+		NuevoAdmin();
+		Parent main = FXMLLoader.load(getClass().getResource("Admin.fxml"));
 
+		Scene scene = new Scene(main);
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
 
-    @FXML
-    void Nuevo_Admin(ActionEvent event) throws IOException {
-    	NuevoAdmin();
-    	Parent main = FXMLLoader.load(getClass().getResource("Admin.fxml"));
+	}
 
-        Scene scene = new Scene(main);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
-    	
-    }
-    
 	private void NuevoAdmin() {
-		
+
 		String usuario = this.textfield_nuevoadmin.getText();
-        String contraseña = this.textfield_psswdadmin.getText();
-        
+		String contraseña = this.textfield_psswdadmin.getText();
 
-    	 try {
-	            ConexionBD conexion = new ConexionBD();
-	            Connection con = conexion.conectarConBase();             
-	            String buscarUsuario = "select * from usuarios";
-	            Statement bu = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-				ResultSet resultado = bu.executeQuery(buscarUsuario);
-				
-				while(resultado.next()) {
-					
-					if(usuario.equalsIgnoreCase(resultado.getString("usuario"))){
-							lbl_userror.setVisible(true);
+		try {
+			ConexionBD conexion = new ConexionBD();
+			Connection con = conexion.conectarConBase();
+			String buscarUsuario = "select * from usuarios";
+			Statement bu = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet resultado = bu.executeQuery(buscarUsuario);
 
-					}else{
-						
-						String safeoff = "set sql_safe_updates = 0";
-						
-						String nuevoAdmin = "UPDATE usuarios SET usuario ='" +usuario +"' , contra ='" +contraseña+ "' WHERE usuario = 'admin'";
-						
-						String safeon = "SET SQL_SAFE_UPDATES=1";
-						
-						Statement na = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-						ResultSet nuevo_safeoff = na.executeQuery(safeoff);
-						ResultSet nuevoad = na.executeQuery(nuevoAdmin);
-						ResultSet nuevo_safeon = na.executeQuery(safeon);
-						
-						lbl_uscorrecto.setVisible(true);
-						 		}
-						}
-				con.close();
-				bu.close();
-		
-    		} catch (SQLException e) {
-				System.out.println( "No se pudo conectar con la Base de Datos");
+			while (resultado.next()) {
+
+				if (usuario.equalsIgnoreCase(resultado.getString("usuario"))) {
+					lbl_userror.setVisible(true);
+
+				} else {
+
+					String nuevoAdmin = "UPDATE usuarios SET usuario ='" + usuario + "' , contra ='" + contraseña
+							+ "' WHERE usuario = 'admin'";
+
+					Statement na = con.createStatement();
+
+					ResultSet nuevoad = na.executeQuery(nuevoAdmin);
+
+					lbl_uscorrecto.setVisible(true);
+				}
 			}
-		 }
+			con.close();
+			bu.close();
+
+		} catch (SQLException e) {
+			System.out.println("No se pudo conectar con la Base de Datos");
+		}
+	}
 }
-
-
-
