@@ -21,9 +21,6 @@ public class AdminController {
     private JFXButton button_busqueda;
 
     @FXML
-    private JFXButton button_modificar;
-
-    @FXML
     private JFXButton button_ingresar;
 
     @FXML
@@ -54,10 +51,9 @@ public class AdminController {
     void Atras(MouseEvent event) {
 
     }
-
     @FXML
     void Busqueda(ActionEvent event) throws IOException {
-    	Parent main = FXMLLoader.load(getClass().getResource("Busqueda.fxml"));
+    	Parent main = FXMLLoader.load(getClass().getResource("BusquedaAdmin.fxml"));
 
         Scene scene = new Scene(main);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -69,7 +65,7 @@ public class AdminController {
     @FXML
     void Busqueda_Avanzada(ActionEvent event) throws IOException {
     	
-    	Parent main = FXMLLoader.load(getClass().getResource("BusquedaAvanzada.fxml"));
+    	Parent main = FXMLLoader.load(getClass().getResource("BusquedaAvanzadaAdmin.fxml"));
 
         Scene scene = new Scene(main);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -127,7 +123,7 @@ public class AdminController {
     
     @FXML
     void ModificarUsuario(ActionEvent event) throws IOException {
-    	Parent main = FXMLLoader.load(getClass().getResource("EliminarUsuario.fxml"));
+    	Parent main = FXMLLoader.load(getClass().getResource("ModificarUsuario.fxml"));
 
         Scene scene = new Scene(main);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -145,15 +141,6 @@ public class AdminController {
         window.show();
     }
 
-    @FXML
-    void modificar(ActionEvent event) throws IOException {
-    	Parent main = FXMLLoader.load(getClass().getResource("ModificarLibro.fxml"));
-
-        Scene scene = new Scene(main);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
-
-    }
+  
 
 }

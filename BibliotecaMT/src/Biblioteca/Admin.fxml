@@ -21,11 +21,6 @@
             <Font size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="button_modificar" layoutX="610.0" layoutY="256.0" onAction="#modificar" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="MODIFICAR LIBRO" textFill="#ececec">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </JFXButton>
       <JFXButton fx:id="button_ingresar" layoutX="47.0" layoutY="256.0" onAction="#Ingresar" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="INGRESAR LIBRO" textFill="#ececec">
          <font>
             <Font size="24.0" />
@@ -58,17 +53,17 @@
             <Font size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="button_modificarusuario" layoutX="610.0" layoutY="358.0" onAction="#ModificarUsuario" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="MODIFICAR USUARIO" textFill="#ececec">
+      <JFXButton fx:id="button_modificarusuario" layoutX="610.0" layoutY="256.0" onAction="#ModificarUsuario" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="MODIFICAR USUARIO" textFill="#ececec">
          <font>
             <Font size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="button_eliminartipo" layoutX="610.0" layoutY="451.0" onAction="#EliminarTipo" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="ELIMINAR TIPO" textFill="#ececec">
+      <JFXButton fx:id="button_eliminartipo" layoutX="610.0" layoutY="358.0" onAction="#EliminarTipo" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="ELIMINAR TIPO" textFill="#ececec">
          <font>
             <Font size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="button_consultas" layoutX="328.0" layoutY="549.0" onAction="#Consultas" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="CONSULTAS" textFill="#ececec">
+      <JFXButton fx:id="button_consultas" layoutX="610.0" layoutY="451.0" onAction="#Consultas" prefHeight="58.0" prefWidth="393.0" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="CONSULTAS" textFill="#ececec">
          <font>
             <Font size="24.0" />
          </font>

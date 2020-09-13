@@ -23,7 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class BusquedaAvanzadaController {
+public class BusquedaAvanzadaAdminController {
 
 
     @FXML
@@ -45,7 +45,7 @@ public class BusquedaAvanzadaController {
 
     @FXML
     void atras(ActionEvent event) throws IOException {
-    	Parent main = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+    	Parent main = FXMLLoader.load(getClass().getResource("Admin.fxml"));
         Scene scene = new Scene(main);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene);

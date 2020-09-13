@@ -26,7 +26,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class BusquedaController {
+public class BusquedaAdminController {
 
     @FXML
     private JFXButton buttont_atras;
@@ -80,7 +80,7 @@ public class BusquedaController {
 
     @FXML
     void ButtonAvanzado(ActionEvent event) throws IOException {
-    	Parent main = FXMLLoader.load(getClass().getResource("BusquedaAvanzada.fxml"));
+    	Parent main = FXMLLoader.load(getClass().getResource("BusquedaAvanzadaAdmin.fxml"));
         Scene scene = new Scene(main);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene);
@@ -90,7 +90,7 @@ public class BusquedaController {
 
     @FXML
     void atras(ActionEvent event) throws IOException {
-    	Parent main = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+    	Parent main = FXMLLoader.load(getClass().getResource("Admin.fxml"));
         Scene scene = new Scene(main);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene);
@@ -175,7 +175,7 @@ public class BusquedaController {
 			}
 		ArrayList<Number> duplicateRowSet = (ArrayList<Number>) Duplicados(coincidencias);  	
 		
-		Parent main = FXMLLoader.load(getClass().getResource("TablaBusqueda.fxml"));
+		Parent main = FXMLLoader.load(getClass().getResource("TablaBusquedaAdmin.fxml"));
         Scene scene = new Scene(main);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene);

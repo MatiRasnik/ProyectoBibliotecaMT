@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1047.0" style="-fx-background-color: #383e56;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Biblioteca.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1047.0" style="-fx-background-color: #383e56;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Biblioteca.TablaBusquedaController">
    <children>
       <JFXButton fx:id="button_buscar" layoutX="398.0" layoutY="602.0" onAction="#buscar" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="MAS INFORMACION" textFill="#ececec">
          <font>

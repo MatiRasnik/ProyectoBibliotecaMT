@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1047.0" style="-fx-background-color: #383e56;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Biblioteca.BusquedaController">
+   <children>
+      <Label layoutX="447.0" layoutY="49.0" text="BIBMT" textFill="#ececec">
+         <font>
+            <Font name="Yu Gothic Medium" size="48.0" />
+         </font>
+      </Label>
+      <Line endX="322.0" layoutX="484.0" layoutY="127.0" startX="-241.0" stroke="#ececec" strokeLineCap="BUTT" strokeType="OUTSIDE" />
+      <ImageView fitHeight="37.0" fitWidth="59.0" layoutX="57.0" layoutY="644.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+         <image>
+            <Image url="@../../../../../../Downloads/32195%20(1).png" />
+         </image>
+      </ImageView>
+      <Label layoutX="146.0" layoutY="192.0" text="Tipo:  " textFill="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="144.0" layoutY="262.0" text="Titulo: " textFill="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="143.0" layoutY="339.0" text="Autor: " textFill="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="143.0" layoutY="402.0" text="Fecha: " textFill="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="639.0" layoutY="199.0" text="Fecha de caducidad: " textFill="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="137.0" layoutY="471.0" text="Editorial:" textFill="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="140.0" layoutY="544.0" text="Genero:" textFill="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="729.0" layoutY="262.0" text="Paginas:" textFill="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="735.0" layoutY="346.0" text="Tomos:" textFill="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="723.0" layoutY="408.0" text="Unidades:" textFill="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="738.0" layoutY="484.0" text="Precio:" textFill="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="buttont_atras" layoutX="91.0" layoutY="653.0" onAction="#atras" ripplerFill="#f8b595" text="Atras" textFill="#ececec">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="button_atras" fitHeight="37.0" fitWidth="59.0" onDragDetected="#Atras" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+               <image>
+                  <Image url="@../css/32195%20(1).png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXTextField fx:id="textfield_titulo" focusColor="#f8b595" layoutX="223.0" layoutY="247.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="textfield_autor" focusColor="#f8b595" layoutX="223.0" layoutY="330.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="textfield_editorial" focusColor="#f8b595" layoutX="223.0" layoutY="463.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="textfield_genero" focusColor="#f8b595" layoutX="223.0" layoutY="535.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="textfield_paginas" focusColor="#f8b595" layoutX="816.0" layoutY="259.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="textfield_tomos" focusColor="#f8b595" layoutX="816.0" layoutY="330.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="textfield_unidades" focusColor="#f8b595" layoutX="816.0" layoutY="406.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="textfield_precio" focusColor="#f8b595" layoutX="816.0" layoutY="475.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXDatePicker fx:id="fecha" defaultColor="#ececec" editable="false" layoutX="232.0" layoutY="409.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" />
+      <JFXDatePicker fx:id="fechacad" defaultColor="#ececec" editable="false" layoutX="816.0" layoutY="206.0" prefHeight="31.0" prefWidth="218.0" stylesheets="@../css/Styles.css" />
+      <JFXButton fx:id="button_buscar" layoutX="465.0" layoutY="612.0" onAction="#buscar" ripplerFill="BLACK" style="-fx-background-color: #282d3e;" text="BUSCAR" textFill="#ececec">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="button_avanzado" layoutX="829.0" layoutY="645.0" onAction="#ButtonAvanzado" ripplerFill="#f8b595" style="-fx-background-color: #282d3e;" text="BUSQUEDA AVANZADA" textFill="#ececec">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXComboBox fx:id="tipobox" focusColor="#f8b595" layoutX="223.0" layoutY="199.0" prefHeight="31.0" prefWidth="211.0" stylesheets="@../css/Styles.css" unFocusColor="#ececec" />
+   </children>
+</AnchorPane>
