@@ -122,8 +122,8 @@ public class BusquedaController {
 	        Statement cs =  con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet resultado = cs.executeQuery(buscarAdmin);
 			
-			while (resultado.next())
-			{
+			while (resultado.next()){
+				
 				String Titulo = resultado.getString("titulo");
 				String Autor = resultado.getString("autor");
 				String Editorial = resultado.getString("editorial");
