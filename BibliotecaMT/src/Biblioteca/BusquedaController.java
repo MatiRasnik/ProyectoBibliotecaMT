@@ -172,8 +172,7 @@ public class BusquedaController {
 				}
 				
 		
-			}
-		ArrayList<Number> duplicateRowSet = (ArrayList<Number>) Duplicados(coincidencias);  	
+			}	
 		
 		Parent main = FXMLLoader.load(getClass().getResource("TablaBusqueda.fxml"));
         Scene scene = new Scene(main);
@@ -186,26 +185,22 @@ public class BusquedaController {
 			System.out.println("Error en la conexion con la Base");
 		}
 		
+		ArrayList<Number> ordenado;
+		int a=0;
+		for(int i=0;i<coincidencias.size();i++)
+		{
+			for(int j=0;j<coincidencias.size();j++) {
+    			if(coincidencias.get(i) == ordenado.get(j)) {
+    				a = 1;
+    			}	
+			}
+			if(a==0) {
+				ordenado.add(coincidencias.get(i));
+			}
+			a=0;
+		}
+		return ordenado;
     }
     
-    public Set<?> Duplicados(List<?> coincidencias) {
-        System.out.println("findDuplicatesInList::"+coincidencias);
-        Set<Object> duplicateRowSet=null;
-        duplicateRowSet=new LinkedHashSet<Object>();
-                for(int i=0;i<coincidencias.size();i++){
-                    Object superString=coincidencias.get(i);
-                    System.out.println("findDuplicatesInList::superString::"+superString);
-                    for(int j=0;j<coincidencias.size();j++){
-                        if(i!=j){
-                             Object subString=coincidencias.get(j);
-                             System.out.println("findDuplicatesInList::subString::"+subString);
-                             if(superString.equals(subString)){
-                                 duplicateRowSet.add(coincidencias.get(j));
-                             }
-                        }
-                    }
-                }
-            return duplicateRowSet;
-      }
 
 }
