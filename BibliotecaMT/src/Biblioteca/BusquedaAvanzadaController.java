@@ -1,6 +1,5 @@
 package Biblioteca;
 
-import java.io.IOException;
 import java.sql.Array;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,6 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
@@ -15,16 +17,10 @@ import com.jfoenix.controls.JFXTextField;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 
 public class BusquedaAvanzadaController {
-
 
     @FXML
     private JFXButton buttont_atras;
@@ -33,7 +29,37 @@ public class BusquedaAvanzadaController {
     private ImageView button_atras;
 
     @FXML
-    private JFXTextField textfield_busqueda;
+    private JFXTextField textfield_tipo;
+
+    @FXML
+    private JFXTextField textfield_titulo;
+
+    @FXML
+    private JFXTextField textfield_autor;
+
+    @FXML
+    private JFXTextField textfield_editorial;
+
+    @FXML
+    private JFXTextField textfield_genero;
+
+    @FXML
+    private JFXTextField textfield_paginas;
+
+    @FXML
+    private JFXTextField textfield_tomos;
+
+    @FXML
+    private JFXTextField textfield_unidades;
+
+    @FXML
+    private JFXTextField textfield_precio;
+
+    @FXML
+    private JFXDatePicker fecha;
+
+    @FXML
+    private JFXDatePicker fechacad;
 
     @FXML
     private JFXButton button_buscar;
@@ -44,33 +70,45 @@ public class BusquedaAvanzadaController {
     }
 
     @FXML
-    void atras(ActionEvent event) throws IOException {
-    	Parent main = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-        Scene scene = new Scene(main);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
-
+    void atras(ActionEvent event) {
 
     }
-
 
     @FXML
     void buscar(ActionEvent event) {
-    	
 
     }
     public class BuscadorAvanzado {
-
-   
-
-		public ArrayList<Number> BusquedaRecursiva(ArrayList<String> palabras,int indice,ArrayList<Number> coincidencias) {
+    	
+    	String busqueda;// se inicializa cuando le dan al boton
+    	ArrayList<String> palabras = GetPalabras(busqueda);
+    	int indice = 0;
+    	ArrayList<Number> coincidencias;
+    	ArrayList<Number> ordenado = BusquedaRecursiva(palabras,indice,coincidencias);
+    	//SE muestran por pantalla todo lo que hay adentro de ordenado
+    	
+    	
+    	
+    	
+    	public ArrayList<Number> BusquedaRecursiva(ArrayList<String> palabras,int indice,ArrayList<Number> coincidencias) {
     		
     		if(indice > palabras.size())
     		{
 	    		String palabra = palabras.get(indice);
 	    		palabra = palabra.trim();
 	    		
+	    		int id = Integer.parseInt(textfield_tipo.getText());
+	    		int tipo = Integer.parseInt(textfield_tipo.getText());
+	    		String titulo = textfield_titulo.getText();
+	    		String autor = textfield_autor.getText();
+	    		LocalDate fecha = this.fecha.getValue();
+	    		LocalDate fechacad = this.fechacad.getValue();
+	    		String editorial = textfield_editorial.getText();
+	    		String genero = textfield_genero.getText();
+	    		int paginas = Integer.parseInt(textfield_paginas.getText());
+	    		int tomos = Integer.parseInt(textfield_tomos.getText());
+	    		int unidades = Integer.parseInt(textfield_unidades.getText());
+	    		int precio = Integer.parseInt(textfield_precio.getText());
 	    		try
 	    		{
 	    			ConexionBD conexion = new ConexionBD();
@@ -154,7 +192,23 @@ public class BusquedaAvanzadaController {
 	    			System.out.println("Error en la conexion con la Base");
 	    		}
     		}
-    	return coincidencias;	
+    		ArrayList<Number> ordenado;
+    		int a=0;
+    		for(int i=0;i<coincidencias.size();i++)
+    		{
+    			for(int j=0;j<coincidencias.size();j++) {
+	    			if(coincidencias.get(i) == ordenado.get(j)) {
+	    				a = 1;
+	    			}	
+    			}
+    			if(a==0) {
+    				ordenado.add(coincidencias.get(i));
+    			}
+    			a=0;
+    		}
+
+    		
+    	return ordenado;	
     	}
     	
     	public ArrayList<String> GetPalabras(String busqueda) {
