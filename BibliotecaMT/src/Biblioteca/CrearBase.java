@@ -44,7 +44,7 @@ public class CrearBase {
 					st.executeUpdate(
 							"create table usuarios (id_usuario SMALLINT UNIQUE auto_increment,usuario VARCHAR(20)not null,contra VARCHAR(100) not null,tipo_usuario smallint,PRIMARY KEY (id_usuario));");
 					st.executeUpdate(
-							"create table tipo_documento (id int UNIQUE auto_increment,fecha_caducidad int DEFAULT  NULL,paginas  int DEFAULT  NULL,tomos  int DEFAULT  NULL,precio  int DEFAULT  NULL,tipodoc varchar(100) NOT NULL,primary key (id));");
+							"create table tipo_documento (id int UNIQUE auto_increment,tipodoc varchar(100) NOT NULL,paginas  int DEFAULT  NULL,precio  int DEFAULT  NULL,tomos  int DEFAULT  NULL,fechacad int DEFAULT  NULL,primary key (id));");
 					st.executeUpdate(
 							"create table almacen (id int UNIQUE auto_increment, tipo varchar(100) NOT NULL, titulo VARCHAR(150) not null, genero VARCHAR(50) not null, editorial VARCHAR(150) not null, autor VARCHAR(50)  null,tomos int  null, paginas int  null, precio int  null, fecha varchar(20)  NULL, fecha_caducidad varchar(20)  NULL, unidades int  null, PRIMARY KEY (id));");
 					String safeoff = "SET SQL_SAFE_UPDATES = 0";
