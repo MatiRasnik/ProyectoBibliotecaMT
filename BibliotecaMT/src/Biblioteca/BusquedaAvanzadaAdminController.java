@@ -153,8 +153,24 @@ public class BusquedaAvanzadaAdminController {
 	    			e.printStackTrace();
 	    			System.out.println("Error en la conexion con la Base");
 	    		}
+	    		indice++;
+				coincidencias = BusquedaRecursiva(palabras,indice,coincidencias);	
     		}
-    	return coincidencias;	
+    		ArrayList<Number> ordenado = null;
+    		int a=0;
+    		for(int i=0;i<coincidencias.size();i++)
+    		{
+    			for(int j=0;j<coincidencias.size();j++) {
+        			if(coincidencias.get(i) == ordenado.get(j)) {
+        				a = 1;
+        			}	
+    			}
+    			if(a==0) {
+    				ordenado.add(coincidencias.get(i));
+    			}
+    			a=0;
+    		}
+    	return ordenado;	
     	}
     	
     	public ArrayList<String> GetPalabras(String busqueda) {
