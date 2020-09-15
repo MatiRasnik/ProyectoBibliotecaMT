@@ -65,6 +65,8 @@ public class LoginController {
 		            String buscarUsuario = "select * from usuarios";
 		            Statement bu = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 					ResultSet resultado = bu.executeQuery(buscarUsuario);
+					
+					System.out.println("asdasd");
 				
 				while(resultado.next()) {
 					
@@ -80,10 +82,10 @@ public class LoginController {
 									 lbl_error.setVisible(true);
 								 		}
 								}
-	
+				System.out.println(u_correcto +" /" + c_correcto);
 				if(u_correcto == true && c_correcto == true) {
 					
-					
+					System.out.println("#1");
 					
 					if(usuario.equalsIgnoreCase("admin") && contraseña.equals("admin")) {
 					
@@ -97,21 +99,23 @@ public class LoginController {
 				
 
 					}else{
-	
+	System.out.println("#2");
 						//0-->ADMIN
 						//1-->Bibliotecologo
-					
+				
 						String verificartipo = "select * from usuarios where usuario ='"+usuario+"'" ;
 						Statement vt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 						ResultSet resultadoVT = vt.executeQuery(verificartipo);
-						
+						System.out.println("#3");
 						//System.out.println(resultadoVT);
 						//System.out.println(resultadoVT.getBoolean("tipo_usuario"));
 						//System.out.println(resultadoVT.getBoolean("tipo_usuario"));
 						//System.out.println(resultadoVT.getInt(4));
+						//System.out.println(resultadoVT.getInt("tipo_usuario"));
 						//System.out.println(resultadoVT.getString("tipo_usuario"));
-							
-						if(resultadoVT.getString("tipo_usuario").equals("0")) {
+						//System.out.println(resultadoVT.getInt("tipo_usuario"));
+						System.out.println("#4");
+						if(resultadoVT.getString("tipo_usuario").equals(0)) {
 							
 							Parent main = FXMLLoader.load(getClass().getResource("Admin.fxml"));
 					        Scene scene = new Scene(main);
@@ -132,7 +136,8 @@ public class LoginController {
 					}
 				
 			 	} catch (SQLException e) {
-					System.out.println( "No se pudo conectar con la Base de Datos");
+					//System.out.println( "No se pudo conectar con la Base de Datos");
+			 		e.printStackTrace();
 				}
 			 }
 	

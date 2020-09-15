@@ -1,5 +1,6 @@
 package Biblioteca;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,7 +40,7 @@ public class BusquedaAvanzadaController {
     }
 
     @FXML
-    void atras(ActionEvent event) {
+    void atras(ActionEvent event) throws IOException {
     	Parent main = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene scene = new Scene(main);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();

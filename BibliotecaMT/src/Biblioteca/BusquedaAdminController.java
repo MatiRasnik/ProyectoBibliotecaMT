@@ -71,7 +71,7 @@ public class BusquedaAdminController {
     private JFXButton button_avanzado;
 
     @FXML
-    private JFXComboBox<?> tipobox;
+    private JFXComboBox<String> tipobox;
 
     @FXML
     void Atras(MouseEvent event) {
@@ -80,7 +80,7 @@ public class BusquedaAdminController {
 
     @FXML
     void ButtonAvanzado(ActionEvent event) throws IOException {
-    	Parent main = FXMLLoader.load(getClass().getResource("BusquedaAvanzadaAdmin.fxml"));
+    	Parent main = FXMLLoader.load(getClass().getResource("BusquedaAvanzada.fxml"));
         Scene scene = new Scene(main);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene);
@@ -90,7 +90,7 @@ public class BusquedaAdminController {
 
     @FXML
     void atras(ActionEvent event) throws IOException {
-    	Parent main = FXMLLoader.load(getClass().getResource("Admin.fxml"));
+    	Parent main = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene scene = new Scene(main);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene);
@@ -99,9 +99,9 @@ public class BusquedaAdminController {
     }
 
     @FXML
-    ArrayList<Number> buscar(ActionEvent event) {
+    ArrayList<Number> buscar(ActionEvent event) throws IOException {
 	
-    	ArrayList<Number> coincidencias;
+    	ArrayList<Number> coincidencias = null;
     	
 		String titulo = textfield_titulo.getText();
 		String autor = textfield_autor.getText();
@@ -122,8 +122,8 @@ public class BusquedaAdminController {
 	        Statement cs =  con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet resultado = cs.executeQuery(buscarAdmin);
 			
-			while (resultado.next())
-			{
+			while (resultado.next()){
+				
 				String Titulo = resultado.getString("titulo");
 				String Autor = resultado.getString("autor");
 				String Editorial = resultado.getString("editorial");
@@ -144,11 +144,11 @@ public class BusquedaAdminController {
 					coincidencias.add(ID);
 				}
 
-				if(fecha == Fecha && fecha != "") {
+				if(Fecha.equals(this.fecha.getValue()) && this.fecha.getValue() != null) {
 					coincidencias.add(ID);
 				}
 
-				if(fechacad == Fechacad && fechacad != "") {
+				if(Fechacad.equals(this.fechacad.getValue()) && this.fechacad.getValue() != null) {
 					coincidencias.add(ID);
 				}
 
@@ -172,10 +172,9 @@ public class BusquedaAdminController {
 				}
 				
 		
-			}
-		ArrayList<Number> duplicateRowSet = (ArrayList<Number>) Duplicados(coincidencias);  	
+			}	
 		
-		Parent main = FXMLLoader.load(getClass().getResource("TablaBusquedaAdmin.fxml"));
+		Parent main = FXMLLoader.load(getClass().getResource("TablaBusqueda.fxml"));
         Scene scene = new Scene(main);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene);
@@ -186,26 +185,22 @@ public class BusquedaAdminController {
 			System.out.println("Error en la conexion con la Base");
 		}
 		
+		ArrayList<Number> ordenado = null;
+		int a=0;
+		for(int i=0;i<coincidencias.size();i++)
+		{
+			for(int j=0;j<coincidencias.size();j++) {
+    			if(coincidencias.get(i) == ordenado.get(j)) {
+    				a = 1;
+    			}	
+			}
+			if(a==0) {
+				ordenado.add(coincidencias.get(i));
+			}
+			a=0;
+		}
+		return ordenado;
     }
     
-    public Set<?> Duplicados(List<?> coincidencias) {
-        System.out.println("findDuplicatesInList::"+coincidencias);
-        Set<Object> duplicateRowSet=null;
-        duplicateRowSet=new LinkedHashSet<Object>();
-                for(int i=0;i<coincidencias.size();i++){
-                    Object superString=coincidencias.get(i);
-                    System.out.println("findDuplicatesInList::superString::"+superString);
-                    for(int j=0;j<coincidencias.size();j++){
-                        if(i!=j){
-                             Object subString=coincidencias.get(j);
-                             System.out.println("findDuplicatesInList::subString::"+subString);
-                             if(superString.equals(subString)){
-                                 duplicateRowSet.add(coincidencias.get(j));
-                             }
-                        }
-                    }
-                }
-            return duplicateRowSet;
-      }
 
 }

@@ -99,7 +99,7 @@ public class BusquedaController {
     }
 
     @FXML
-    ArrayList<Number> buscar(ActionEvent event) {
+    ArrayList<Number> buscar(ActionEvent event) throws IOException {
 	
     	ArrayList<Number> coincidencias = null;
     	
