@@ -95,7 +95,7 @@ public class LoginController {
 				        window.setScene(scene);
 				        window.show();
 				
-
+				        System.out.println(resultadoVT.getString("tipo_usuario").equals("0"));
 					}else{
 	
 						//0-->ADMIN

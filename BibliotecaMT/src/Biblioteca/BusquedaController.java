@@ -99,7 +99,7 @@ public class BusquedaController {
     }
 
     @FXML
-    ArrayList<Number> buscar(ActionEvent event) {
+    ArrayList<Number> buscar(ActionEvent event) throws IOException {
 	
     	ArrayList<Number> coincidencias = null;
     	
@@ -143,15 +143,12 @@ public class BusquedaController {
 				if(autor == Autor && autor != "") {
 					coincidencias.add(ID);
 				}
-
 				if(Fecha.equals(this.fecha.getValue()) && this.fecha.getValue() != null) {
 					coincidencias.add(ID);
 				}
-
 				if(Fechacad.equals(this.fechacad.getValue()) && this.fechacad.getValue() != null) {
 					coincidencias.add(ID);
 				}
-
 				if(editorial == Editorial && editorial != "") {
 					coincidencias.add(ID);
 				}

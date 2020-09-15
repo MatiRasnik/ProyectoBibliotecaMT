@@ -1,5 +1,6 @@
 package Biblioteca;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,7 +40,7 @@ public class BusquedaAvanzadaController {
     }
 
     @FXML
-    void atras(ActionEvent event) {
+    void atras(ActionEvent event) throws IOException {
     	Parent main = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene scene = new Scene(main);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -53,7 +54,7 @@ public class BusquedaAvanzadaController {
     	ArrayList<String> palabras = GetPalabras(busqueda);
     	int indice = 0;
     	ArrayList<Number> coincidencias = null;
-    	ArrayList<Number> ordenado = BusquedaRecursiva(palabras,indice,coincidencias);
+    	ArrayList<Number> ordenado = BusquedaRecursiva(palabras,indice,coincidencias);  
     	//SE muestran por pantalla todo lo que hay adentro de ordenado
     }
 	
@@ -140,13 +141,13 @@ public class BusquedaAvanzadaController {
 		    				}
 	    				}
 					}
-    				indice++;
-    				coincidencias = BusquedaRecursiva(palabras,indice,coincidencias);	
     			}	
     		} catch (SQLException e) {
     			e.printStackTrace();
     			System.out.println("Error en la conexion con la Base");
     		}
+    		indice++;
+			coincidencias = BusquedaRecursiva(palabras,indice,coincidencias);	
 		}
 		ArrayList<Number> ordenado = null;
 		int a=0;
