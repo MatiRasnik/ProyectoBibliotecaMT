@@ -13,10 +13,10 @@ public class Main extends Application{
     }
 
     public void start(Stage primaryStage) throws Exception {
+    	 CrearBase crear = new CrearBase();
+         crear.crearDB();
         Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-
         Scene scene = new Scene(root);
-
         primaryStage.setTitle("BibliotecaMT");
         primaryStage.setScene(scene);
         primaryStage.show();

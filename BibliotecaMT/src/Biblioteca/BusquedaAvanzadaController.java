@@ -54,7 +54,7 @@ public class BusquedaAvanzadaController {
     	ArrayList<String> palabras = GetPalabras(busqueda);
     	int indice = 0;
     	ArrayList<Number> coincidencias = null;
-    	ArrayList<Number> ordenado = BusquedaRecursiva(palabras,indice,coincidencias);
+    	ArrayList<Number> ordenado = BusquedaRecursiva(palabras,indice,coincidencias);  
     	//SE muestran por pantalla todo lo que hay adentro de ordenado
     }
 	
@@ -70,6 +70,7 @@ public class BusquedaAvanzadaController {
     		{
     			ConexionBD conexion = new ConexionBD();
     	        Connection con = conexion.conectarConBase(); 
+
     	        String buscarAdmin = "select * from Almacen";
     	        Statement cs =  con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
     			ResultSet resultado = cs.executeQuery(buscarAdmin);
@@ -141,13 +142,13 @@ public class BusquedaAvanzadaController {
 		    				}
 	    				}
 					}
-    				indice++;
-    				coincidencias = BusquedaRecursiva(palabras,indice,coincidencias);	
     			}	
     		} catch (SQLException e) {
     			e.printStackTrace();
     			System.out.println("Error en la conexion con la Base");
     		}
+    		indice++;
+			coincidencias = BusquedaRecursiva(palabras,indice,coincidencias);	
 		}
 		ArrayList<Number> ordenado = null;
 		int a=0;

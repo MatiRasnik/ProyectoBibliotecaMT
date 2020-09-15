@@ -61,12 +61,11 @@ public class LoginController {
 	        
 	    	 try {
 		            ConexionBD conexion = new ConexionBD();
-		            Connection con = conexion.conectarConBase();             
+		            Connection con = conexion.conectarConBase();   
 		            String buscarUsuario = "select * from usuarios";
 		            Statement bu = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 					ResultSet resultado = bu.executeQuery(buscarUsuario);
 					
-					System.out.println("asdasd");
 				
 				while(resultado.next()) {
 					
@@ -85,10 +84,7 @@ public class LoginController {
 				System.out.println(u_correcto +" /" + c_correcto);
 				if(u_correcto == true && c_correcto == true) {
 					
-					System.out.println("#1");
-					
 					if(usuario.equalsIgnoreCase("admin") && contraseña.equals("admin")) {
-					
 						
 						Parent nuevoadmin = FXMLLoader.load(getClass().getResource("NuevoAdmin.fxml"));
 
@@ -96,27 +92,22 @@ public class LoginController {
 				        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 				        window.setScene(scene);
 				        window.show();
-				
-
 					}else{
-	System.out.println("#2");
+	
 						//0-->ADMIN
 						//1-->Bibliotecologo
-				
+
 						String verificartipo = "select * from usuarios where usuario ='"+usuario+"'" ;
+		
 						Statement vt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 						ResultSet resultadoVT = vt.executeQuery(verificartipo);
-						System.out.println("#3");
-						//System.out.println(resultadoVT);
-						//System.out.println(resultadoVT.getBoolean("tipo_usuario"));
-						//System.out.println(resultadoVT.getBoolean("tipo_usuario"));
-						//System.out.println(resultadoVT.getInt(4));
-						//System.out.println(resultadoVT.getInt("tipo_usuario"));
-						//System.out.println(resultadoVT.getString("tipo_usuario"));
-						//System.out.println(resultadoVT.getInt("tipo_usuario"));
-						System.out.println("#4");
-						if(resultadoVT.getString("tipo_usuario").equals(0)) {
-							
+						
+						if(resultadoVT.next()) {
+						System.out.println("Tipo usuario: "+resultadoVT.getString("tipo_usuario"));
+						}
+						
+						if(resultadoVT.getString("tipo_usuario").equals("0")) {
+
 							Parent main = FXMLLoader.load(getClass().getResource("Admin.fxml"));
 					        Scene scene = new Scene(main);
 					        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -125,7 +116,6 @@ public class LoginController {
 
 							}else{
 								Parent main = FXMLLoader.load(getClass().getResource("Biblotecologo.fxml"));
-
 						        Scene scene = new Scene(main);
 						        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 						        window.setScene(scene);
@@ -136,8 +126,7 @@ public class LoginController {
 					}
 				
 			 	} catch (SQLException e) {
-					//System.out.println( "No se pudo conectar con la Base de Datos");
-			 		e.printStackTrace();
+					System.out.println( "No se pudo conectar con la Base de Datos");
 				}
 			 }
 	

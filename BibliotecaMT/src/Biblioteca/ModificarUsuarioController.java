@@ -24,158 +24,177 @@ import javafx.stage.Stage;
 
 public class ModificarUsuarioController {
 
-    @FXML
-    private JFXTextField textfield_usuarioactual;
+	@FXML
+	private JFXTextField textfield_usuarioactual;
 
-    @FXML
-    private JFXButton button_eliminar;
+	@FXML
+	private JFXButton button_eliminar;
 
-    @FXML
-    private JFXButton buttont_atras;
+	@FXML
+	private JFXButton buttont_atras;
 
-    @FXML
-    private ImageView button_atras;
+	@FXML
+	private ImageView button_atras;
 
-    @FXML
-    private Label lbl_error;
+	@FXML
+	private Label lbl_error;
 
-    @FXML
-    private Label lbl_eliminado;
+	@FXML
+	private Label lbl_eliminado;
 
-    @FXML
-    private Label lbl_eliminado1;
+	@FXML
+	private Label lbl_eliminado1;
 
-    @FXML
-    private JFXTextField textfield_Nuevousuario;
+	@FXML
+	private JFXTextField textfield_Nuevousuario;
 
-    @FXML
-    private JFXPasswordField textfield_ContraActual;
+	@FXML
+	private JFXPasswordField textfield_ContraActual;
 
-    @FXML
-    private JFXPasswordField textfield_NuevaContra;
+	@FXML
+	private JFXPasswordField textfield_NuevaContra;
 
-    @FXML
-    private JFXButton button_Modificar;
-    
-    @FXML
-    private Label lbl_mod;
-    
-    @FXML
-    private CheckBox checkbox_admin;
+	@FXML
+	private JFXButton button_Modificar;
 
+	@FXML
+	private Label lbl_mod;
 
-    @FXML
-    void Atras(MouseEvent event) {
+	@FXML
+	private CheckBox checkbox_admin;
 
-    }
+	@FXML
+	void Atras(MouseEvent event) {
 
-    @FXML
-    void Eliminar_usuario(ActionEvent event) {
-    	eliminarusuario();
+	}
 
-    }
-    
-    @FXML
-    void Modificar_usuario(ActionEvent event) {
-    	modificarusuario();
-    	
-    }
+	@FXML
+	void Eliminar_usuario(ActionEvent event) {
+		eliminarusuario();
 
-    private void modificarusuario() {
-    	try {
-    		String acuser = textfield_usuarioactual.getText();
-    		String acpsswd = textfield_ContraActual.getText();
-    		String nwusae = textfield_Nuevousuario.getText();
-    		String nwpsswd = textfield_NuevaContra.getText();
-    		
+	}
+
+	@FXML
+	void Modificar_usuario(ActionEvent event) {
+		modificarusuario();
+
+	}
+
+	private void modificarusuario() {
+		lbl_error.setVisible(false);
+		lbl_mod.setVisible(false);
+		lbl_error.setVisible(false);
+		lbl_eliminado.setVisible(false);
+		try {
+			String actualuser = textfield_usuarioactual.getText();
+			String actualpsswd = textfield_ContraActual.getText();
+			String nwusae = textfield_Nuevousuario.getText();
+			String nwpsswd = textfield_NuevaContra.getText();
+
 			ConexionBD conexion = new ConexionBD();
 			Connection con = conexion.conectarConBase();
 			String modusar = "select * from usuarios";
 			Statement mu = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet resultado = mu.executeQuery(modusar);
 
-			while (resultado.next()) {
-				
-				boolean tipo = false;
-				if(checkbox_admin.isSelected()) {
-					tipo = false;
-				}else {
-					tipo = true;
-				}
-					if (acuser.equalsIgnoreCase(resultado.getString("usuario")) && acpsswd.equals(resultado.getString("contra"))) {
-						
-						String safeoff = "set sql_safe_updates = 0";
-						
-						String nuevoAdmin = "UPDATE usuarios SET usuario ='" +nwusae+"' , contra ='" +nwpsswd+ "', tipo_usuario ='" +tipo+ " WHERE usuario = '" +acuser+ "'";
-						
-						String safeon = "SET SQL_SAFE_UPDATES=1";
-						
-						Statement na = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-						ResultSet nuevo_safeoff = na.executeQuery(safeoff);
-						ResultSet nuevoad = na.executeQuery(nuevoAdmin);
-						ResultSet nuevo_safeon = na.executeQuery(safeon);
-						
-						lbl_mod.setVisible(true);
-					} else {
-						lbl_error.setVisible(true);
-					}
-				}
+			int tipo = 1;
+			if (checkbox_admin.isSelected()) {
+				tipo = 0;
+				System.out.println("Tipo: " + tipo);
+			} else {
+				tipo = 1;
+				System.out.println("Tipo: " + tipo);
+			}
 
+			boolean existe = false;
+			while (resultado.next()) {
+
+				if (actualuser.equalsIgnoreCase(resultado.getString("usuario"))) {
+					existe = true;
+					System.out.println("El usuario existe. ");
+				}
+			}
+
+			if (existe == true) {
+
+				String modUsuario = "UPDATE usuarios SET usuario ='" +nwusae+ "' , contra ='" +nwpsswd
+						+ "' , tipo_usuario ='" +tipo+ "' WHERE usuario = '" +actualuser+ "'";
+				Statement na = con.createStatement();
+				na.executeUpdate(modUsuario);
+				lbl_error.setVisible(false);
+				lbl_mod.setVisible(true);
+				System.out.println("Usuario modificado. ");
+			} else {
+				lbl_mod.setVisible(false);
+				lbl_error.setVisible(true);
+				System.out.println("Usuario no modificado. ");
+			}
 
 			con.close();
 			mu.close();
-		}catch(
+		} catch (
 
-	SQLException e)
-	{
-		e.printStackTrace();
-		System.out.println("Error en la conexion con la Base");
-	}
+		SQLException e) {
+			e.printStackTrace();
+			System.out.println("Error en la conexion con la Base");
+		}
 
-		
 	}
 
 	private void eliminarusuario() {
-    	try {
-    		String eliminarusuario = textfield_usuarioactual.getText();
-    		
+		lbl_error.setVisible(false);
+		lbl_mod.setVisible(false);
+		lbl_error.setVisible(false);
+		lbl_eliminado.setVisible(false);
+		try {
+			String eliminarusuario = textfield_usuarioactual.getText();
+
 			ConexionBD conexion = new ConexionBD();
 			Connection con = conexion.conectarConBase();
 			String deluser = "select * from usuarios";
 			Statement ds = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet resultado = ds.executeQuery(deluser);
 
+			boolean existe = false;
 			while (resultado.next()) {
-					if (eliminarusuario.equalsIgnoreCase(resultado.getString("usuario"))) {
-						String insertString = "DELETE FROM usuarios WHERE usuario = '" +eliminarusuario+ "'" ;
-						int cant = ds.executeUpdate(insertString);
-						lbl_eliminado.setVisible(true);
-					} else {
-						lbl_error.setVisible(true);
-					}
-				}
+				if (eliminarusuario.equalsIgnoreCase(resultado.getString("usuario"))) {
+					existe = true;
+					System.out.println("El usuario existe. ");
 
+				}
+			}
+
+			if (existe == true) {
+				String insertString = "DELETE FROM usuarios WHERE usuario = '" + eliminarusuario + "'";
+				int cant = ds.executeUpdate(insertString);
+				lbl_error.setVisible(false);
+				lbl_eliminado.setVisible(true);
+				System.out.println("Usuario eliminado. ");
+			} else {
+				lbl_eliminado.setVisible(false);
+				lbl_error.setVisible(true);
+				System.out.println("Usuario no eliminado. ");
+			}
 
 			con.close();
 			ds.close();
-		}catch(
+		} catch (
 
-	SQLException e)
-	{
-		e.printStackTrace();
-		System.out.println("Error en la conexion con la Base");
-	}
+		SQLException e) {
+			e.printStackTrace();
+			System.out.println("Error en la conexion con la Base");
+		}
 
 	}
 
 	@FXML
-    void atras(ActionEvent event) throws IOException {
+	void atras(ActionEvent event) throws IOException {
 		Parent main = FXMLLoader.load(getClass().getResource("Admin.fxml"));
 
-        Scene scene = new Scene(main);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
-    }
+		Scene scene = new Scene(main);
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(scene);
+		window.show();
+	}
 
 }

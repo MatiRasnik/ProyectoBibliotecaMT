@@ -81,7 +81,7 @@ public class AdminController {
     
     @FXML
     void EliminarTipo(ActionEvent event) throws IOException {
-    	Parent main = FXMLLoader.load(getClass().getResource("EliminarTipo.fxml"));
+    	Parent main = FXMLLoader.load(getClass().getResource("ModificarTipo.fxml"));
 
         Scene scene = new Scene(main);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -91,7 +91,7 @@ public class AdminController {
 
     @FXML
     void Ingresar(ActionEvent event) throws IOException {
-    	Parent main = FXMLLoader.load(getClass().getResource("IngresarLibro.fxml"));
+    	Parent main = FXMLLoader.load(getClass().getResource("Ingresar.fxml"));
 
         Scene scene = new Scene(main);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();

@@ -117,7 +117,7 @@ public class BusquedaController {
 		try {
 			
 			ConexionBD conexion = new ConexionBD();
-	        Connection con = conexion.conectarConBase(); 
+	        Connection con = conexion.conectarConBase();
 	        String buscarAdmin = "select * from Almacen";
 	        Statement cs =  con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet resultado = cs.executeQuery(buscarAdmin);
@@ -143,15 +143,12 @@ public class BusquedaController {
 				if(autor == Autor && autor != "") {
 					coincidencias.add(ID);
 				}
-
 				if(Fecha.equals(this.fecha.getValue()) && this.fecha.getValue() != null) {
 					coincidencias.add(ID);
 				}
-
 				if(Fechacad.equals(this.fechacad.getValue()) && this.fechacad.getValue() != null) {
 					coincidencias.add(ID);
 				}
-
 				if(editorial == Editorial && editorial != "") {
 					coincidencias.add(ID);
 				}

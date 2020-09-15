@@ -114,8 +114,8 @@ public class ModificarTipoController implements Initializable {
 						fechacad = 1;
 					}
 
-					String UpdateTipo = "UPDATE tipo_documento SET  paginas = '" + paginas + "', tomos = '" + tomo
-							+ "', precio = '" + precio + "','" + fechacad + "'  WHERE tipo ='" + modtipo + "'";
+					String UpdateTipo = "UPDATE tipo_documento SET  paginas = '" +paginas+ "', tomos = '" +tomo
+							+ "', precio = '" +precio+ "',fechacad = '" +fechacad+ "'  WHERE tipodoc ='" +modtipo+ "'";
 
 					Statement ut = con.createStatement();
 					ut.executeUpdate(UpdateTipo);

@@ -64,18 +64,19 @@ public class NuevoAdminController {
 			while (resultado.next()) {
 
 				if (usuario.equalsIgnoreCase(resultado.getString("usuario"))) {
+					lbl_uscorrecto.setVisible(false);
 					lbl_userror.setVisible(true);
 
 				} else {
 
 					String nuevoAdmin = "UPDATE usuarios SET usuario ='" + usuario + "' , contra ='" + contraseña
 							+ "' WHERE usuario = 'admin'";
-
 					Statement na = con.createStatement();
 
-					ResultSet nuevoad = na.executeQuery(nuevoAdmin);
-
+					na.executeUpdate(nuevoAdmin);
+					lbl_userror.setVisible(false);
 					lbl_uscorrecto.setVisible(true);
+
 				}
 			}
 			con.close();

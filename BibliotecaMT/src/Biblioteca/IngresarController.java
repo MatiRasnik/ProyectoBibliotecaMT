@@ -100,10 +100,10 @@ public class IngresarController implements Initializable {
 		LocalDate fechacad = this.fechacad.getValue();
 		String editorial = textfield_editorial.getText();
 		String genero = textfield_genero.getText();
-		int paginas = Integer.parseInt(textfield_paginas.getText());
-		int tomos = Integer.parseInt(textfield_tomos.getText());
-		int unidades = Integer.parseInt(textfield_unidades.getText());
-		int precio = Integer.parseInt(textfield_precio.getText());
+		int paginas = 0;
+		int tomos = 0;
+		int unidades = 0;
+		int precio = 0;
 
 		try {
 
@@ -112,16 +112,36 @@ public class IngresarController implements Initializable {
 			String documentos = "select * from almacen";
 			Statement doc = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet resultado = doc.executeQuery(documentos);
+			boolean existe = false;
 
 			while (resultado.next()) {
 
-				if (tipo != null || titulo == null || fecha == null || unidades != 0) {
-					lbl_error.setVisible(true);
-				} else {
-					if (titulo.equalsIgnoreCase(resultado.getString("titulo"))) {
-						lbl_errorexiste.setVisible(true);
+				if (titulo.equalsIgnoreCase(resultado.getString("titulo"))) {
+					lbl_correcto.setVisible(false);
+					lbl_errorexiste.setVisible(true);
+					textfield_titulo.setText(" ");
+					existe = true;
+				}
+
+				if (existe == false) {
+					lbl_errorexiste.setVisible(false);
+					if (tipo == null || titulo == null || fecha == null || unidades != 0) {
+						lbl_error.setVisible(true);
 
 					} else {
+						if (!textfield_paginas.getText().equals("")) {
+							paginas = Integer.parseInt(textfield_paginas.getText());
+						}
+						if (!textfield_tomos.getText().equals("")) {
+							tomos = Integer.parseInt(textfield_tomos.getText());
+						}
+						if (!textfield_unidades.getText().equals("")) {
+							unidades = Integer.parseInt(textfield_unidades.getText());
+						}
+						if (!textfield_precio.getText().equals("")) {
+							precio = Integer.parseInt(textfield_precio.getText());
+						}
+
 						String insertString = "INSERT INTO almacen"
 								+ "(tipo, titulo, autor, fecha, fecha_caducidad, editorial, genero, paginas, tomos, unidades, precio) "
 								+ "values" + "('" + tipo + "', '" + titulo + "', '" + autor + "', '" + fecha + "', '"
@@ -129,6 +149,17 @@ public class IngresarController implements Initializable {
 								+ "', '" + unidades + "', '" + precio + "')";
 						int cant = doc.executeUpdate(insertString);
 						lbl_correcto.setVisible(true);
+						tipobox.setValue(null);
+						textfield_titulo.setText(" ");
+						textfield_autor.setText("");
+						this.fecha.setValue(null);
+						this.fechacad.setValue(null);
+						textfield_editorial.setText(" ");
+						textfield_genero.setText(" ");
+						textfield_paginas.setText(" ");
+						textfield_tomos.setText(" ");
+						textfield_unidades.setText(" ");
+						textfield_precio.setText(" ");
 					}
 				}
 
@@ -137,7 +168,6 @@ public class IngresarController implements Initializable {
 			con.close();
 			doc.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			System.out.println("Error en la conexion con la Base");
 		}
 	}
@@ -145,7 +175,7 @@ public class IngresarController implements Initializable {
 	@FXML
 	void atras(ActionEvent event) throws IOException {
 
-		Parent main = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+		Parent main = FXMLLoader.load(getClass().getResource("Admin.fxml"));
 		Scene scene = new Scene(main);
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		window.setScene(scene);
@@ -203,7 +233,7 @@ public class IngresarController implements Initializable {
 						textfield_precio.setEditable(true);
 						textfield_precio.setDisable(false);
 					}
-					
+
 					if (resultado.getString("fechacad").equals("0")) {
 						fechacad.setEditable(false);
 						fechacad.setDisable(true);

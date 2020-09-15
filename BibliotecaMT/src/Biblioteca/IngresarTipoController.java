@@ -81,30 +81,51 @@ public class IngresarTipoController {
 
 			if (checkPaginas.isSelected()) {
 				paginas = 1;
+				System.out.println("Paginas: "+ paginas);
 			}
 			if (checkPrecio.isSelected()) {
 				precio = 1;
+				System.out.println("Precio: "+ precio);
 			}
 			if (checkTomos.isSelected()) {
-				tomos = 1;
+				precio = 1;
+				System.out.println("Tomos: "+ precio);
 			}
 			if (checkFechacad.isSelected()) {
 				fechacad = 1;
+				System.out.println("Fechacad: "+ fechacad);
 			}
-
+			boolean existe = false;
+			
 			while (resultado.next()) {
 
 				if (nuevotipo.equalsIgnoreCase(resultado.getString("tipodoc"))) {
 					lbl_error.setVisible(true);
+					lbl_creado.setVisible(false);
+					existe = true;
+					System.out.println("Existe: "+existe);
+					textfield_tipo.setText(" ");
+					checkPaginas.setSelected(false);
+					checkPrecio.setSelected(false);
+					checkTomos.setSelected(false);
+					checkFechacad.setSelected(false);
 
-				} else {
+				}}
+				if(existe == false) {
 					String insertString = "INSERT INTO tipo_documento"
-							+ "(id, tipodoc, paginas, precio, tomos, fechacad) " + "values" + "('" + nuevotipo + "','"
+							+ "(tipodoc, paginas, precio, tomos, fechacad) " + "values" + "('" + nuevotipo + "','"
 							+ paginas + "','" + precio + "','" + tomos + "','" + fechacad + "')";
 					int cant = doc.executeUpdate(insertString);
+					System.out.println("tipo crado");
 					lbl_creado.setVisible(true);
+					lbl_error.setVisible(false);
+					textfield_tipo.setText(" ");
+					checkPaginas.setSelected(false);
+					checkPrecio.setSelected(false);
+					checkTomos.setSelected(false);
+					checkFechacad.setSelected(false);
 				}
-			}
+			
 
 			con.close();
 			doc.close();
@@ -119,7 +140,7 @@ public class IngresarTipoController {
 
 	@FXML
 	void atras(ActionEvent event) throws IOException {
-		Parent main = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+		Parent main = FXMLLoader.load(getClass().getResource("Admin.fxml"));
 
 		Scene scene = new Scene(main);
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
