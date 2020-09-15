@@ -70,6 +70,8 @@ public class BusquedaAvanzadaController {
     		{
     			ConexionBD conexion = new ConexionBD();
     	        Connection con = conexion.conectarConBase(); 
+    	        CrearBase crear = new CrearBase();
+	            crear.crearDB();
     	        String buscarAdmin = "select * from Almacen";
     	        Statement cs =  con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
     			ResultSet resultado = cs.executeQuery(buscarAdmin);

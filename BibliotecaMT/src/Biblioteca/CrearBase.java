@@ -7,9 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class CrearBase {
+	
 	private Statement st;
 	ResultSet rs = null;
 	boolean existe;
+	
 	
 	public void crearDB(){
 		Connection con = null;

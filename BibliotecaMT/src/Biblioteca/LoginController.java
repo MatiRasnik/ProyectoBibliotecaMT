@@ -61,7 +61,9 @@ public class LoginController {
 	        
 	    	 try {
 		            ConexionBD conexion = new ConexionBD();
-		            Connection con = conexion.conectarConBase();             
+		            Connection con = conexion.conectarConBase(); 
+		            CrearBase crear = new CrearBase();
+		            crear.crearDB();     
 		            String buscarUsuario = "select * from usuarios";
 		            Statement bu = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 					ResultSet resultado = bu.executeQuery(buscarUsuario);
@@ -94,21 +96,19 @@ public class LoginController {
 				        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 				        window.setScene(scene);
 				        window.show();
-				
-				        System.out.println(resultadoVT.getString("tipo_usuario").equals("0"));
 					}else{
 	
 						//0-->ADMIN
 						//1-->Bibliotecologo
 					
-						String verificartipo = "select * from usuarios where usuario ='"+usuario+"'" ;
+						String verificartipo = "select * from usuarios where tipo_usuario" ;
 						Statement vt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 						ResultSet resultadoVT = vt.executeQuery(verificartipo);
 						
 						//System.out.println(resultadoVT);
 						//System.out.println(resultadoVT.getBoolean("tipo_usuario"));
 						//System.out.println(resultadoVT.getBoolean("tipo_usuario"));
-						//System.out.println(resultadoVT.getInt(4));
+						System.out.println(resultadoVT.getInt(0));
 						//System.out.println(resultadoVT.getString("tipo_usuario"));
 							
 						if(resultadoVT.getString("tipo_usuario").equals("0")) {
