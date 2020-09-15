@@ -140,7 +140,7 @@ public class IngresarTipoController {
 
 	@FXML
 	void atras(ActionEvent event) throws IOException {
-		Parent main = FXMLLoader.load(getClass().getResource("Admin.fxml"));
+		Parent main = FXMLLoader.load(getClass().getResource("Menu.fxml"));
 
 		Scene scene = new Scene(main);
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

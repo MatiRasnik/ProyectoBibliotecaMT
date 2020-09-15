@@ -84,6 +84,9 @@ public class ModificarTipoController implements Initializable {
 	}
 
 	private void modificartipo() {
+		lbl_error.setVisible(false);
+		lbl_error.setVisible(false);
+		lbl_eliminado.setVisible(false);
 		try {
 			String modtipo = tipobox.getValue();
 
@@ -93,38 +96,47 @@ public class ModificarTipoController implements Initializable {
 			Statement doc = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet resultado = doc.executeQuery(documentos);
 
+			int paginas = 0;
+			int tomo = 0;
+			int precio = 0;
+			int fechacad = 0;
+
+			if (checkPaginas.isSelected()) {
+				paginas = 1;
+			}
+			if (checkTomos.isSelected()) {
+				tomo = 1;
+			}
+			if (checkPrecio.isSelected()) {
+				precio = 1;
+			}
+			if (checkFechacad.isSelected()) {
+				fechacad = 1;
+			}
+
+			boolean existe = false;
 			while (resultado.next()) {
 				if (modtipo.equals(resultado.getString("tipodoc"))) {
-
-					int paginas = 0;
-					int tomo = 0;
-					int precio = 0;
-					int fechacad = 0;
-
-					if (checkPaginas.isSelected()) {
-						paginas = 1;
-					}
-					if (checkTomos.isSelected()) {
-						tomo = 1;
-					}
-					if (checkPrecio.isSelected()) {
-						precio = 1;
-					}
-					if (checkFechacad.isSelected()) {
-						fechacad = 1;
-					}
-
-					String UpdateTipo = "UPDATE tipo_documento SET  paginas = '" +paginas+ "', tomos = '" +tomo
-							+ "', precio = '" +precio+ "',fechacad = '" +fechacad+ "'  WHERE tipodoc ='" +modtipo+ "'";
-
-					Statement ut = con.createStatement();
-					ut.executeUpdate(UpdateTipo);
-
-					checkPaginas.setSelected(false);
-					checkTomos.setSelected(false);
-					checkPrecio.setSelected(false);
-					checkFechacad.setSelected(false);
+					existe = true;
 				}
+			}
+
+			if (existe == true) {
+				String UpdateTipo = "UPDATE tipo_documento SET  paginas = '" + paginas + "', tomos = '" + tomo
+						+ "', precio = '" + precio + "',fechacad = '" + fechacad + "'  WHERE tipodoc ='" + modtipo
+						+ "'";
+
+				Statement ut = con.createStatement();
+				ut.executeUpdate(UpdateTipo);
+				System.out.println("Tipo modificado. ");
+
+				checkPaginas.setSelected(false);
+				checkTomos.setSelected(false);
+				checkPrecio.setSelected(false);
+				checkFechacad.setSelected(false);
+			} else {
+				lbl_error.setVisible(true);
+				System.out.println("No se pudo modificar el tipo. ");
 			}
 
 			con.close();
@@ -132,13 +144,15 @@ public class ModificarTipoController implements Initializable {
 		} catch (
 
 		SQLException e) {
-			e.printStackTrace();
 			System.out.println("Error en la conexion con la Base");
 		}
 
 	}
 
 	private void eliminartipo() {
+		lbl_error.setVisible(false);
+		lbl_error.setVisible(false);
+		lbl_eliminado.setVisible(false);
 		try {
 			String eliminartipo = tipobox.getValue();
 
@@ -148,14 +162,23 @@ public class ModificarTipoController implements Initializable {
 			Statement doc = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet resultado = doc.executeQuery(documentos);
 
+			boolean existe = false;
 			while (resultado.next()) {
 				if (eliminartipo.equalsIgnoreCase(resultado.getString("tipodoc"))) {
-					String insertString = "DELETE FROM tipo_documento WHERE tipodoc = '" + eliminartipo + "'";
-					int cant = doc.executeUpdate(insertString);
-					lbl_eliminado.setVisible(true);
-				} else {
-					lbl_error.setVisible(true);
+					existe = true;
 				}
+			}
+
+			if (existe == true) {
+				String insertString = "DELETE FROM tipo_documento WHERE tipodoc = '" + eliminartipo + "'";
+				int cant = doc.executeUpdate(insertString);
+				lbl_error.setVisible(false);
+				lbl_eliminado.setVisible(true);
+				System.out.println("Tipo eliminado correctamente. ");
+			} else {
+				lbl_error.setVisible(true);
+				lbl_eliminado.setVisible(false);
+				System.out.println("No se pudo modificar el tipo. ");
 			}
 
 			con.close();
