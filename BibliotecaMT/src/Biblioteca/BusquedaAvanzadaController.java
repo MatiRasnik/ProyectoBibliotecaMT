@@ -53,15 +53,15 @@ public class BusquedaAvanzadaController {
     	String busqueda = textfield_busqueda.getText();
     	ArrayList<String> palabras = GetPalabras(busqueda);
     	int indice = 0;
-    	ArrayList<Number> coincidencias = null;
+    	ArrayList<Number> coincidencias = new ArrayList<Number>();
     	ArrayList<Number> ordenado = BusquedaRecursiva(palabras,indice,coincidencias);  
-    	//SE muestran por pantalla todo lo que hay adentro de ordenado
+    	System.out.println(ordenado);
     }
 	
 	
 	public ArrayList<Number> BusquedaRecursiva(ArrayList<String> palabras,int indice,ArrayList<Number> coincidencias) {
 		
-		if(indice > palabras.size())
+		if(indice < palabras.size())
 		{
     		String palabra = palabras.get(indice);
     		palabra = palabra.trim();
@@ -71,64 +71,70 @@ public class BusquedaAvanzadaController {
     			ConexionBD conexion = new ConexionBD();
     	        Connection con = conexion.conectarConBase(); 
 
-    	        String buscarAdmin = "select * from Almacen";
+    	        String buscarAdmin = "select * from almacen";
     	        Statement cs =  con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
     			ResultSet resultado = cs.executeQuery(buscarAdmin);
+
     			while (resultado.next())
     			{	
+
     				String Titulo = resultado.getString("titulo");
     				String Autor = resultado.getString("autor");
     				String Editorial = resultado.getString("editorial");
     				String Genero = resultado.getString("genero");
     				String Fecha = resultado.getString("fecha");
-    				String Fechacad = resultado.getString("fechacad");
-    				int Tipo = resultado.getInt("tipo");
+    				String Fechacad = resultado.getString("fecha_caducidad");
+    				String Tipo = resultado.getString("tipo");
     				int Paginas = resultado.getInt("paginas");
     				int Tomos = resultado.getInt("tomos");
     				int Unidades = resultado.getInt("unidades");
-    				int Precio = resultado.getInt("precios");
+    				int Precio = resultado.getInt("precio");
     				int ID = resultado.getInt("id");
-    				
-    				if(palabra == Titulo) {
+  
+    				if(palabra.equalsIgnoreCase(Titulo)) {
+
     					coincidencias.add(ID);
     				}else {
-    					
-						if(palabra == Autor) {
+
+						if(palabra.equalsIgnoreCase(Autor)) {
 	    					coincidencias.add(ID);
 	    				}else {
 		    					
-		    				if(palabra == Editorial) {
+		    				if(palabra.equalsIgnoreCase(Editorial)) {
 		    					coincidencias.add(ID);
 		    				}else {
 			    					
-			    				if(palabra == Genero) {
+			    				if(palabra.equalsIgnoreCase(Genero)) {
 			    					coincidencias.add(ID);
 			    				}else {
 				    					
-				    				if(palabra == Fecha) {
+				    				if(palabra.equalsIgnoreCase(Fecha)) {
 				    					coincidencias.add(ID);
 				    				}else {
 					    					
-					    				if(palabra == Fechacad) {
+					    				if(palabra.equalsIgnoreCase(Fechacad)) {
 					    					coincidencias.add(ID);
 					    				}else {
-					    					String TipoCadena= Integer.toString(Tipo);
-						    				if(palabra == TipoCadena) {
+						    				if(palabra.equalsIgnoreCase(Tipo)) {
 						    					coincidencias.add(ID);
 						    				}else {
-						    					String PaginasCadena= Integer.toString(Paginas);
+						    					String PaginasCadena= Paginas+"";
+						    					PaginasCadena = PaginasCadena.trim();
 							    				if(palabra == PaginasCadena) {
 							    					coincidencias.add(ID);
 							    				}else {
-							    					String TomosCadena= Integer.toString(Tomos);
+							    					String TomosCadena= Tomos+"";
+							    					TomosCadena = TomosCadena.trim();
 								    				if(palabra == TomosCadena) {
 								    					coincidencias.add(ID);
 								    				}else {
-								    					String UnidadesCadena= Integer.toString(Unidades);
+								    					String UnidadesCadena= Unidades+"";
+								    					UnidadesCadena = UnidadesCadena.trim();
 									    				if(palabra == UnidadesCadena) {
 									    					coincidencias.add(ID);
 									    				}else {
-									    					String PrecioCadena= Integer.toString(Precio);
+									    					String PrecioCadena= Precio+"";
+									    					PrecioCadena = PrecioCadena.trim();
 										    				if(palabra == PrecioCadena) {
 										    					coincidencias.add(ID);
 										    				}
@@ -150,17 +156,24 @@ public class BusquedaAvanzadaController {
     		indice++;
 			coincidencias = BusquedaRecursiva(palabras,indice,coincidencias);	
 		}
-		ArrayList<Number> ordenado = null;
 		int a=0;
-		for(int i=0;i<coincidencias.size();i++)
+		ArrayList<Number> ordenado = new ArrayList<Number>();
+		
+		int numero = (int) coincidencias.get(0);
+		ordenado.add(numero);
+		int Tamaño = coincidencias.size();
+		int TamañoOrd = ordenado.size();
+		for(int i=0;i<Tamaño;i++)
 		{
-			for(int j=0;j<coincidencias.size();j++) {
+			for(int j=0;j<TamañoOrd;j++) {
     			if(coincidencias.get(i) == ordenado.get(j)) {
     				a = 1;
     			}	
 			}
 			if(a==0) {
-				ordenado.add(coincidencias.get(i));
+				numero = (int) coincidencias.get(i);
+				ordenado.add(numero);
+				TamañoOrd++;
 			}
 			a=0;
 		}
